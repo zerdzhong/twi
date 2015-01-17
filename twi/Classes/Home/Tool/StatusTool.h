@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 
 //传回微博数组
-typedef void (^StatusSuccessBlock)(NSArray *statusArray);
-typedef void (^StatusFailureBlock)(NSError *error);
+typedef void (^SuccessBlock)(NSArray *resultArray);
+typedef void (^FailureBlock)(NSError *error);
 
 @interface StatusTool : NSObject
 
-+ (void)getStatusesWithSuccess:(StatusSuccessBlock)success failure:(StatusFailureBlock)failure;
++ (void)getStatusesWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
++ (void)getComments:(int64_t )ID success:(SuccessBlock)success failuer:(FailureBlock)failure;
 
 @end

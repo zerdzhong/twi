@@ -17,6 +17,7 @@
 @implementation BaseTabBarController
 
 - (void)viewDidLoad{
+    [super viewDidLoad];
     //1.添加 tabbar
     self.tabBar = [[TabBar alloc]init];
     self.tabBar.delegate = self;

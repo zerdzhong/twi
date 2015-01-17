@@ -32,6 +32,15 @@
     return self;
 }
 
+-(void)awakeFromNib{
+    //用户头像
+    _profileImageView = [[UIImageView alloc]init];
+    [self addSubview:_profileImageView];
+    //认证图标
+    _vertifyImageView = [[UIImageView alloc]init];
+    [self addSubview:_vertifyImageView];
+}
+
 #pragma mark- 同时设置用户和类型
 
 - (void)setUser:(UserModel *)user type:(ProfileType)type{
@@ -45,7 +54,10 @@
     _user = user;
     
     //设置用户头像
-    [HttpTool loadImageView:_profileImageView withUrl:[NSURL URLWithString:_user.profileImageURL] place:[UIImage imageNamed:_placeholder]];
+    [HttpTool loadImageView:_profileImageView withUrl:[NSURL URLWithString:_user.profileImageURL] place:[UIImage imageNamed:_placeholder] completed:^(UIImage *image, NSError *error) {
+        _profileImageView.image = [self getEllipseImageWithImage:image];
+        [self layoutSubviews];
+    }];
     
     //设置认证图标
     UIImage *vertifyImage = nil ;
@@ -115,6 +127,56 @@
     frame.size =  self.bounds.size;
     
     [super setFrame:frame];
+}
+
+#pragma mark- test
+
+-(UIImage *)getEllipseImageWithImage:( UIImage *)originImage
+{
+    UIColor * epsBackColor = [UIColor lightGrayColor]; // 边框的背景色
+    
+    int boundPadding = 1;
+    int padding = boundPadding + 1;
+    
+    CGSize originsize = originImage.size ;
+    
+    CGRect originRect = CGRectMake( 0 , 0 , originsize. width , originsize. height );
+    
+    UIGraphicsBeginImageContext (originsize);
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext ();
+    
+    // 目标区域。
+    CGRect desRect =  CGRectMake (padding, padding,originsize. width - (2 * padding) , originsize. height - (2 * padding));
+    CGRect boundRect =  CGRectMake (boundPadding, boundPadding,originsize. width - (2 * boundPadding) , originsize. height - (2 * boundPadding));
+    
+    
+    // 设置填充背景色。
+    
+    CGContextAddEllipseInRect (ctx,boundRect);
+    
+    CGContextClip (ctx); // 截取椭圆区域。
+    
+    CGContextSetFillColorWithColor (ctx, epsBackColor. CGColor );
+    
+    UIRectFill (boundRect); // 真正的填充
+    
+    // 设置椭圆变形区域。
+    
+    CGContextAddEllipseInRect (ctx,desRect);
+    
+    CGContextClip (ctx); // 截取椭圆区域。
+    
+    [originImage drawInRect :originRect]; // 将图像画在目标区域。
+    
+    UIImage * desImage = UIGraphicsGetImageFromCurrentImageContext ();
+    
+    UIGraphicsEndImageContext ();
+    
+//    UIGraphicsPushContext(ctx);
+    
+    return desImage;
+    
 }
 
 @end

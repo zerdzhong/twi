@@ -15,6 +15,7 @@
         self.text = dict[@"text"];
         self.picURLs = dict[@"pic_urls"];
         self.user = [[UserModel alloc]initWithDict:dict[@"user"]];
+        self.ID = [dict[@"id"] longLongValue];
         //如果有转发
         if (dict[@"retweeted_status"] != nil) {
             self.reStatus = [[StatusModel alloc]initWithDict:dict[@"retweeted_status"]];
@@ -63,6 +64,9 @@
 - (void)setSource:(NSString *)source{
     // <a href="http://weibo.com/" rel="nofollow">能吸雾霾的iPhone 6 Plus</a>
     
+    if (source == nil || source.length == 0) {
+        return;
+    }
     unsigned long beg = [source rangeOfString:@">"].location + 1;
     unsigned long int end = [source rangeOfString:@"</"].location;
     

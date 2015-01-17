@@ -8,6 +8,7 @@
 
 #import "PictureListView.h"
 #import "PictureListItem.h"
+#import "MJPhotoBrowser.h"
 
 #define kPicCount 9
 
@@ -19,6 +20,12 @@
 
 #define kMargin 10
 
+@interface PictureListView ()
+
+@property (nonatomic, strong) NSMutableArray *largePictures;
+
+@end
+
 @implementation PictureListView
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -29,7 +36,6 @@
             PictureListItem *image = [[PictureListItem alloc]init];
             [self addSubview:image];
         }
-        
     }
 
     return self;
@@ -38,7 +44,7 @@
 //set方法
 - (void)setPicUrlArray:(NSArray *)picUrlArray{
     _picUrlArray = picUrlArray;
-
+    _largePictures = [NSMutableArray array];
     for (int i = 0; i < kPicCount; i++) {
         //取出对应位置的ImageView
         PictureListItem *childView = [self subviews][i];
@@ -47,6 +53,19 @@
             childView.hidden = NO;
             //设置图片
             childView.url = _picUrlArray[i][@"thumbnail_pic"];
+            //设置大图URL
+            NSMutableString *thumbUrl = [[NSMutableString alloc]initWithString:childView.url];
+            NSRange range = [thumbUrl rangeOfString:@"thumbnail"];
+            if (range.length != 0) {
+                [thumbUrl replaceCharactersInRange:range withString:@"large"];
+                [_largePictures addObject:thumbUrl];
+            }
+            //设置点击时间
+            __unsafe_unretained PictureListView *weakself = self;
+            __unsafe_unretained PictureListItem *weakPicture = childView;
+            [childView addTapBlock:^(PictureListItem *pic) {
+                [weakself browsePicturesIndex:i srcImageView:weakPicture];
+            }];
             //设置frame
             if (_picUrlArray.count == 1) {
                 //只有一张
@@ -60,8 +79,6 @@
                 childView.clipsToBounds = YES;
                 childView.contentMode = UIViewContentModeScaleAspectFill;
             }
-            
-            
         }else {
             childView.hidden = YES;
         }
@@ -82,6 +99,24 @@
         CGFloat height = kMutilHeight * lintCount + kMargin * (lintCount - 1);
         return CGSizeMake(width, height);
     }
+}
+
+- (void)browsePicturesIndex:(int)index srcImageView:(UIImageView *)imageView{
+    //        显示大图
+    int count = (int)_largePictures.count;
+    NSMutableArray *photos = [NSMutableArray arrayWithCapacity:count];
+    for (int i = 0; i<count; i++) {
+        MJPhoto *photo = [[MJPhoto alloc] init];
+        photo.url = [NSURL URLWithString:[_largePictures objectAtIndex:i]]; // 图片路径
+        photo.srcImageView = imageView; // 来源于哪个UIImageView
+        [photos addObject:photo];
+    }
+    
+    // 2.显示相册
+    MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
+    browser.currentPhotoIndex = index; // 弹出相册时显示的第一张图片是？
+    browser.photos = photos; // 设置所有的图片
+    [browser show];
 }
 
 @end

@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UserModel *user;          //微博作者
 @property (nonatomic, strong) NSArray *picURLs;         //微博配图
 @property (nonatomic, strong) StatusModel *reStatus;    //转发的微博
+@property (nonatomic, assign) int64_t ID;
 
 @property (nonatomic, copy) NSString* createdTime;       //创建时间
 

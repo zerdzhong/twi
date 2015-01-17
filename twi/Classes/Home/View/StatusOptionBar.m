@@ -37,8 +37,8 @@
     [btn setTitleColor:kColor(188, 188, 188) forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:14];
     [btn setImage:[UIImage imageNamed:icon] forState:UIControlStateNormal];
-    [btn setBackgroundImage:[UIImage resizedImage:bg] forState:UIControlStateNormal];
-    [btn setBackgroundImage:[UIImage resizedImage:[bg fileAppend:@"_highlighted"]] forState:UIControlStateNormal];
+//    [btn setBackgroundImage:[UIImage resizedImage:bg] forState:UIControlStateNormal];
+//    [btn setBackgroundImage:[UIImage resizedImage:[bg fileAppend:@"_highlighted"]] forState:UIControlStateHighlighted];
     CGFloat width = self.frame.size.width / 3;
     btn.frame = CGRectMake(index * width, 0, width, kOptionBarHeight);
     btn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);

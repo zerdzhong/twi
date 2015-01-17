@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^TapBlock)(id obj);
+
 @interface PictureListItem : UIImageView
 
 @property (nonatomic, copy) NSString *url;
+
+- (void)addTapBlock:(TapBlock)tapBlcok;
 
 @end

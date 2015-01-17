@@ -123,6 +123,7 @@
     
     //转发微博试图
     _retweetedView = [[UIImageView alloc]init];
+    _retweetedView.userInteractionEnabled = YES;
     _retweetedView.image = [UIImage resizedImage:@"timeline_retweet_background.png" xPos:0.9 yPos:0.5];
     [self.contentView addSubview:_retweetedView];
     

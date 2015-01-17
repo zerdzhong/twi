@@ -13,10 +13,12 @@
 #import "UserModel.h"
 #import "StatusCellFrame.h"
 #import "StatusCell.h"
+#import "TweetDetailController.h"
 
 @interface HomeController ()
 
-@property (nonatomic,strong) NSMutableArray *statusFrameArray;
+@property (nonatomic, strong) NSMutableArray *statusFrameArray;
+//@property (nonatomic, strong) TweetDetailController *tweetVC;
 
 @end
 
@@ -113,8 +115,30 @@
     }
     
     cell.statusCellFrame = _statusFrameArray[indexPath.row];
+//    cell.selectedBackgroundView = [UIView new];
     
     return cell;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 100;
+}
+
+#pragma mark- Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //调到微博详情
+    TweetDetailController *tweetVC = [[TweetDetailController alloc]init];
+    
+    tweetVC.currentStatus = [_statusFrameArray[indexPath.row] valueForKey:@"status"];
+    
+    [self.navigationController pushViewController:tweetVC animated:YES];
+    
+}
+
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+//}
 
 @end

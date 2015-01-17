@@ -15,6 +15,16 @@
 @implementation HttpTool
 
 //加载图片
++ (void)loadImageView:(UIImageView *)imageView withUrl:(NSURL *)url place:(UIImage *)placeImage completed:(LoadImageCompletBlock)completed{
+    [imageView sd_setImageWithURL:url
+                 placeholderImage:placeImage
+                          options:SDWebImageRetryFailed | SDWebImageLowPriority
+                        completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                            completed(image,error);
+                        }];
+}
+
+//加载图片
 + (void)loadImageView:(UIImageView *)imageView withUrl:(NSURL *)url place:(UIImage *)placeImage;{
     [imageView sd_setImageWithURL:url
             placeholderImage:placeImage

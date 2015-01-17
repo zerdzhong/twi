@@ -9,11 +9,16 @@
 #ifndef ___Common_h
 #define ___Common_h
 
+#import "UIBadgeView.h"
 
 //1.判断是否为 iPhone5
 #define iPhone5 ([UIScreen mainScreen].bounds.size.height == 568)
 
 #define kColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+
+#define kScreen_Bounds [UIScreen mainScreen].bounds
+#define kScreen_Height [UIScreen mainScreen].bounds.size.height
+#define kScreen_Width [UIScreen mainScreen].bounds.size.width
 
 //表格背景色
 #define kGlobalTableBG kColor(237,237,237)

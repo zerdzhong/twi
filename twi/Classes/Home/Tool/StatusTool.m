@@ -8,12 +8,13 @@
 
 #import "StatusTool.h"
 #import "StatusModel.h"
+#import "CommentModel.h"
 #import "HttpTool.h"
 #import "WeiboAccountTool.h"
 
 @implementation StatusTool
 
-+ (void)getStatusesWithSuccess:(StatusSuccessBlock)success failure:(StatusFailureBlock)failure{
++ (void)getStatusesWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure{
 
     [HttpTool getWithPath:@"2/statuses/home_timeline.json" params:nil
              successBlock:^(id JSON) {
@@ -30,6 +31,25 @@
                  failure(error);
              }
      ];
+}
+
++ (void)getComments:(int64_t )ID success:(SuccessBlock)success failuer:(FailureBlock)failure{
+    [HttpTool getWithPath:@"2/comments/show.json"
+                   params:@{@"id":@(ID)}
+             successBlock:^(id JSON) {
+                 if (success == nil) return ;
+                 NSMutableArray *array = [[NSMutableArray alloc]init];
+                 NSArray *statuses = JSON[@"comments"];
+                 for (NSDictionary *dict in statuses) {
+                     CommentModel *comment = [[CommentModel alloc]initWithDict:dict];
+                     [array addObject:comment];
+                 }
+                 success(array);
+             }
+             failureBlock:^(NSError *error) {
+                 if (failure == nil) return ;
+                 failure(error);
+             }];
 }
 
 @end
