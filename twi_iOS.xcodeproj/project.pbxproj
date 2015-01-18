@@ -130,7 +130,7 @@
 		17A021A619F4004B0061772E /* HttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 17A021A519F4004B0061772E /* HttpTool.m */; };
 		17AD6EA319F5346500C5C71C /* StatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AD6EA219F5346500C5C71C /* StatusModel.m */; };
 		17AD6EA619F5347700C5C71C /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AD6EA519F5347700C5C71C /* UserModel.m */; };
-		17AD6EAA19F53C1300C5C71C /* StatusTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AD6EA919F53C1300C5C71C /* StatusTool.m */; };
+		17AD6EAA19F53C1300C5C71C /* TweetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 17AD6EA919F53C1300C5C71C /* TweetTool.m */; };
 		17D6118619F13B710042689C /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D6118519F13B710042689C /* HomeController.m */; };
 		17D6118B19F13BCB0042689C /* MoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D6118A19F13BCB0042689C /* MoreController.m */; };
 		17EE707C19F2201500CADA06 /* BaseTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17EE707B19F2201500CADA06 /* BaseTabBarController.m */; };
@@ -392,8 +392,8 @@
 		17AD6EA219F5346500C5C71C /* StatusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusModel.m; sourceTree = "<group>"; };
 		17AD6EA419F5347700C5C71C /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		17AD6EA519F5347700C5C71C /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
-		17AD6EA819F53C1300C5C71C /* StatusTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusTool.h; sourceTree = "<group>"; };
-		17AD6EA919F53C1300C5C71C /* StatusTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusTool.m; sourceTree = "<group>"; };
+		17AD6EA819F53C1300C5C71C /* TweetTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetTool.h; sourceTree = "<group>"; };
+		17AD6EA919F53C1300C5C71C /* TweetTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetTool.m; sourceTree = "<group>"; };
 		17AD6EAB19F542F500C5C71C /* WeiboConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboConfig.h; sourceTree = "<group>"; };
 		17D6118419F13B710042689C /* HomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeController.h; sourceTree = "<group>"; };
 		17D6118519F13B710042689C /* HomeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeController.m; sourceTree = "<group>"; };
@@ -1002,8 +1002,8 @@
 		17AD6EA719F53BF000C5C71C /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				17AD6EA819F53C1300C5C71C /* StatusTool.h */,
-				17AD6EA919F53C1300C5C71C /* StatusTool.m */,
+				17AD6EA819F53C1300C5C71C /* TweetTool.h */,
+				17AD6EA919F53C1300C5C71C /* TweetTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1499,7 +1499,7 @@
 				1736321419F3909700E38161 /* AFImageRequestOperation.m in Sources */,
 				1736322419F390CE00E38161 /* UIBarButtonItem+ZD.m in Sources */,
 				5C96B4CC19FE80E900BBC397 /* PictureListView.m in Sources */,
-				17AD6EAA19F53C1300C5C71C /* StatusTool.m in Sources */,
+				17AD6EAA19F53C1300C5C71C /* TweetTool.m in Sources */,
 				173631F819F37D9500E38161 /* OauthController.m in Sources */,
 				5CCB12111A690E7C00997ABF /* TweetDetailController.m in Sources */,
 				1736321919F3909700E38161 /* AFXMLRequestOperation.m in Sources */,

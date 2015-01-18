@@ -8,17 +8,18 @@
 
 #import "HomeController.h"
 #import "UIBarButtonItem+ZD.h"
-#import "StatusTool.h"
+#import "TweetTool.h"
 #import "StatusModel.h"
 #import "UserModel.h"
 #import "StatusCellFrame.h"
 #import "StatusCell.h"
 #import "TweetDetailController.h"
+#import "MJRefresh.h"
 
 @interface HomeController ()
 
 @property (nonatomic, strong) NSMutableArray *statusFrameArray;
-//@property (nonatomic, strong) TweetDetailController *tweetVC;
+@property (nonatomic, assign) int page;
 
 @end
 
@@ -27,7 +28,6 @@
 - (id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
     if (self) {
-        
     }
     return self;
 }
@@ -40,7 +40,7 @@
     
     //2.请求数据
     
-    [self getStatusData];
+    [self onHeaderRefresh];
     
 }
 
@@ -64,16 +64,17 @@
     //增加底部额外的滚动区域
     [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 10, 0)];
     [self.tableView setBackgroundColor:kGlobalTableBG];
+    
+    //添加上下拉刷新
+    [self.tableView addFooterWithTarget:self action:@selector(onFooterRefresh)];
+    [self.tableView addHeaderWithTarget:self action:@selector(onHeaderRefresh)];
 }
 
-#pragma mark- 请求首页数据
-
-- (void)getStatusData{
-    
-    _statusFrameArray = [NSMutableArray array];
-    
-    [StatusTool getStatusesWithSuccess:^(NSArray *statusArray) {
+#pragma mark- 上下拉刷新
+- (void)onFooterRefresh{
+    [TweetTool getTweetsWithPage:_page + 1 success:^(NSArray *statusArray) {
         //拿到最新微博数据的同时，计算frame
+//        _statusFrameArray = [NSMutableArray array];
         
         for (StatusModel *status in statusArray) {
             StatusCellFrame *cellFrame = [[StatusCellFrame alloc]init];
@@ -83,8 +84,32 @@
         
         //刷新tableview
         [self.tableView reloadData];
+        [self.tableView footerEndRefreshing];
+        _page ++;
     } failure:^(NSError *error) {
         //failure
+        [self.tableView footerEndRefreshing];
+    }];
+}
+
+- (void)onHeaderRefresh{
+    [TweetTool getTweetsWithPage:1 success:^(NSArray *statusArray) {
+        //拿到最新微博数据的同时，计算frame
+        _statusFrameArray = [NSMutableArray array];
+        
+        for (StatusModel *status in statusArray) {
+            StatusCellFrame *cellFrame = [[StatusCellFrame alloc]init];
+            cellFrame.status = status;
+            [_statusFrameArray addObject:cellFrame];
+        }
+        
+        //刷新tableview
+        [self.tableView reloadData];
+        [self.tableView headerEndRefreshing];
+        _page = 1;
+    } failure:^(NSError *error) {
+        //failure
+        [self.tableView headerEndRefreshing];
     }];
 }
 

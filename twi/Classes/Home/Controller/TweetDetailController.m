@@ -10,9 +10,10 @@
 #import "StatusCell.h"
 #import "ProfileView.h"
 #import "UIView+Common.h"
-#import "StatusTool.h"
+#import "TweetTool.h"
 #import "CommentModel.h"
 #import "CommentCell.h"
+#import "MJRefresh.h"
 
 #define kCellIdentifier_TweetDetail @"TweetDetailCell"
 #define kCellIdentifier_TweetDetailComment @"TweetDetailCommentCell"
@@ -30,6 +31,8 @@
 @property (strong, nonatomic) StatusCellFrame *tweetCellFrame;
 @property (strong, nonatomic) NSMutableArray *commentFrameArray;
 
+@property (assign, nonatomic) int page;
+
 @end
 
 @implementation TweetDetailController
@@ -45,6 +48,10 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.tableView registerClass:[StatusCell class] forCellReuseIdentifier:kCellIdentifier_TweetDetail];
     [self.tableView registerClass:[CommentCell class] forCellReuseIdentifier:kCellIdentifier_TweetDetailComment];
+    
+    //添加上下拉刷新
+    [self.tableView addFooterWithTarget:self action:@selector(onFooterRefresh)];
+    [self.tableView addHeaderWithTarget:self action:@selector(onHeaderRefresh)];
 }
 
 - (void)setCurrentStatus:(StatusModel *)currentStatus{
@@ -54,19 +61,49 @@
     }
     _tweetCellFrame.status = _currentStatus;
     
+    [self onHeaderRefresh];
+}
+
+#pragma mark- 上下拉刷新
+- (void)onFooterRefresh{
     
-    _commentFrameArray = [NSMutableArray array];
-    [StatusTool getComments:_currentStatus.ID success:^(NSArray *commentArray) {
+    [TweetTool getCommentsWithID:_currentStatus.ID page:_page + 1 success:^(NSArray *resultArray) {
+        //拿到最新微博数据的同时，计算frame
         
-        for (CommentModel *comment in commentArray) {
+        for (CommentModel *comment in resultArray) {
             CommentCellFrame *cellFrame = [[CommentCellFrame alloc]init];
             cellFrame.comment = comment;
             [_commentFrameArray addObject:cellFrame];
         }
-
-        [self.tableView reloadData];
-    } failuer:^(NSError *error) {
         
+        //刷新tableview
+        [self.tableView reloadData];
+        [self.tableView footerEndRefreshing];
+        _page ++;
+    } failuer:^(NSError *error) {
+        //failure
+        [self.tableView footerEndRefreshing];
+    }];
+}
+
+- (void)onHeaderRefresh{
+    [TweetTool getCommentsWithID:_currentStatus.ID page:1 success:^(NSArray *resultArray) {
+        //拿到最新微博数据的同时，计算frame
+        _commentFrameArray = [NSMutableArray array];
+        
+        for (CommentModel *comment in resultArray) {
+            CommentCellFrame *cellFrame = [[CommentCellFrame alloc]init];
+            cellFrame.comment = comment;
+            [_commentFrameArray addObject:cellFrame];
+        }
+        
+        //刷新tableview
+        [self.tableView reloadData];
+        [self.tableView headerEndRefreshing];
+        _page = 1;
+    } failuer:^(NSError *error) {
+        //failure
+        [self.tableView headerEndRefreshing];
     }];
 }
 
