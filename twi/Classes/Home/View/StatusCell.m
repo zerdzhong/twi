@@ -7,7 +7,7 @@
 //  展示一条微博
 
 #import "StatusCell.h"
-#import "ProfileView.h"
+#import "ProfileImageView.h"
 #import "PictureListView.h"
 #import "StatusOptionBar.h"
 #import "UIImage+ZD.h"
@@ -19,7 +19,7 @@
 
 @interface StatusCell ()
 
-@property (nonatomic, strong) ProfileView *profileImage;    //头像
+@property (nonatomic, strong) ProfileImageView *profileImage;    //头像
 @property (nonatomic, strong) UILabel *screenName;          //昵称
 @property (nonatomic, strong) UIImageView *memberImage;     //会员图标
 @property (nonatomic, strong) UILabel *time;                //时间
@@ -76,7 +76,7 @@
 #pragma mark- 初始化界面
 - (void)addAllSubviews{
     //头像
-    _profileImage = [[ProfileView alloc]init];
+    _profileImage = [[ProfileImageView alloc]init];
     [self.contentView addSubview:_profileImage];
 
     //昵称

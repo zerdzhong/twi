@@ -13,11 +13,12 @@
 - (id)initWithDict:(NSDictionary *)dict{
     if (self = [super init]) {
         self.screenName = dict[@"screen_name"];
-        self.profileImageURL = dict[@"profile_image_url"];
+        self.profileImageURL = dict[@"avatar_hd"];
         self.verified = [dict[@"verified"] boolValue];
         self.verifiedType = [dict[@"verified_ype"] intValue];
         self.memberRank = [dict[@"mbrank"] intValue];
         self.memberType = [dict[@"mbtype"] intValue];
+        self.coverImageURL = dict[@"cover_image_phone"];
     }
     
     return self;

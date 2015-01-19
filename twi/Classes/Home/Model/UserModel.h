@@ -26,11 +26,13 @@ typedef enum {
 @interface UserModel : NSObject
 
 @property (nonatomic, copy) NSString *screenName;
-@property (nonatomic, copy) NSString *profileImageURL;   //头像
-@property (nonatomic, assign) BOOL verified;           //是否认证
-@property (nonatomic, assign) int verifiedType;        //认证类型
-@property (nonatomic, assign) int memberRank;           //会员等级
-@property (nonatomic, assign) MBType memberType;           //会员类型
+@property (nonatomic, copy) NSString *profileImageURL;      //头像
+@property (nonatomic, assign) BOOL verified;                //是否认证
+@property (nonatomic, assign) int verifiedType;             //认证类型
+@property (nonatomic, assign) int memberRank;               //会员等级
+@property (nonatomic, assign) MBType memberType;            //会员类型
+
+@property (nonatomic, copy) NSString *coverImageURL;
 
 
 - (id)initWithDict:(NSDictionary *)dict;

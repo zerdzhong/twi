@@ -8,7 +8,7 @@
 
 #import "StatusCellFrame.h"
 #import "PictureListView.h"
-#import "ProfileView.h"
+#import "ProfileImageView.h"
 
 #define kMemberImageWidth 14
 #define kMemberImageHeight 14

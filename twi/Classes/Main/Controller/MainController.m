@@ -10,6 +10,7 @@
 #import "TabBar.h"
 #import "HomeController.h"
 #import "MoreController.h"
+#import "ProfilePageController.h"
 
 @interface MainController ()
 
@@ -39,8 +40,8 @@
     UINavigationController *nav2 = [[UINavigationController alloc]initWithRootViewController:messageVC];
     [self addChildViewController:nav2];
     //3我
-    UIViewController *meVC = [[UIViewController alloc]init];
-    meVC.view.backgroundColor = [UIColor blueColor];
+    ProfilePageController *meVC = [[ProfilePageController alloc]init];
+//    meVC.view.backgroundColor = [UIColor whiteColor];
     meVC.title = @"我";
     UINavigationController *nav3 = [[UINavigationController alloc]initWithRootViewController:meVC];
     [self addChildViewController:nav3];

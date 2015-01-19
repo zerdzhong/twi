@@ -8,7 +8,7 @@
 
 #import "TweetDetailController.h"
 #import "StatusCell.h"
-#import "ProfileView.h"
+#import "ProfileImageView.h"
 #import "UIView+Common.h"
 #import "TweetTool.h"
 #import "CommentModel.h"
@@ -22,7 +22,7 @@
 
 
 @property (strong, nonatomic)  NSLayoutConstraint *tweetContent;
-@property (strong, nonatomic)  ProfileView *profileImage;
+@property (strong, nonatomic)  ProfileImageView *profileImage;
 @property (strong, nonatomic)  UILabel *userName;
 @property (strong, nonatomic)  UILabel *creatTime;
 @property (strong, nonatomic)  UILabel *source;
@@ -45,7 +45,6 @@
     
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.tableFooterView = [UIView new];
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.tableView registerClass:[StatusCell class] forCellReuseIdentifier:kCellIdentifier_TweetDetail];
     [self.tableView registerClass:[CommentCell class] forCellReuseIdentifier:kCellIdentifier_TweetDetailComment];
     

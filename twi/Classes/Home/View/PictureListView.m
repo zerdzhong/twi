@@ -23,6 +23,7 @@
 @interface PictureListView ()
 
 @property (nonatomic, strong) NSMutableArray *largePictures;
+@property (nonatomic, strong) NSMutableArray *photos;
 
 @end
 
@@ -104,18 +105,18 @@
 - (void)browsePicturesIndex:(int)index srcImageView:(UIImageView *)imageView{
     //        显示大图
     int count = (int)_largePictures.count;
-    NSMutableArray *photos = [NSMutableArray arrayWithCapacity:count];
+    _photos = [NSMutableArray arrayWithCapacity:count];
     for (int i = 0; i<count; i++) {
         MJPhoto *photo = [[MJPhoto alloc] init];
         photo.url = [NSURL URLWithString:[_largePictures objectAtIndex:i]]; // 图片路径
         photo.srcImageView = imageView; // 来源于哪个UIImageView
-        [photos addObject:photo];
+        [_photos addObject:photo];
     }
     
     // 2.显示相册
     MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
     browser.currentPhotoIndex = index; // 弹出相册时显示的第一张图片是？
-    browser.photos = photos; // 设置所有的图片
+    browser.photos = _photos; // 设置所有的图片
     [browser show];
 }
 

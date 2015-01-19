@@ -15,6 +15,7 @@ typedef void (^LoadImageCompletBlock)(UIImage *image, NSError *error);
 
 @interface HttpTool : NSObject
 
+
 + (void)postWithPath:(NSString *)path params:(NSDictionary *)params successBlock:(HttpSuccessBlock)success failureBlock:(HttpFailureBlock)failure ;
 
 + (void)getWithPath:(NSString *)path params:(NSDictionary *)params successBlock:(HttpSuccessBlock)success failureBlock:(HttpFailureBlock)failure ;

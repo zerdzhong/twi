@@ -155,7 +155,12 @@
 		5C090E091A13AE4D000BB15B /* common_card_background_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C090E081A13AE4D000BB15B /* common_card_background_highlighted@2x.png */; };
 		5C090E0B1A13B4A4000BB15B /* timeline_image_loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C090E0A1A13B4A4000BB15B /* timeline_image_loading.png */; };
 		5C090E0D1A13B4AC000BB15B /* timeline_image_loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C090E0C1A13B4AC000BB15B /* timeline_image_loading@2x.png */; };
-		5C2A74FD19FBC59C001950EB /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A74FC19FBC59C001950EB /* ProfileView.m */; };
+		5C2A74FD19FBC59C001950EB /* ProfileImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A74FC19FBC59C001950EB /* ProfileImageView.m */; };
+		5C2CEF1B1A6C9CFA00F773AE /* ProfilePageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2CEF191A6C9CFA00F773AE /* ProfilePageController.m */; };
+		5C2CEF201A6CABFE00F773AE /* ProfileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2CEF1F1A6CABFE00F773AE /* ProfileTool.m */; };
+		5C388C5E1A6D4182007F4817 /* ProfileHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C388C5D1A6D4182007F4817 /* ProfileHeadView.m */; };
+		5C388C601A6D4323007F4817 /* ProfileHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C388C5F1A6D4323007F4817 /* ProfileHeadView.xib */; };
+		5C388C621A6D4594007F4817 /* ProfilePageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C388C611A6D4594007F4817 /* ProfilePageController.xib */; };
 		5C3EA2D01A1CCD07001F76DE /* timeline_icon_comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3EA2CA1A1CCD07001F76DE /* timeline_icon_comment.png */; };
 		5C3EA2D11A1CCD07001F76DE /* timeline_icon_comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3EA2CB1A1CCD07001F76DE /* timeline_icon_comment@2x.png */; };
 		5C3EA2D21A1CCD07001F76DE /* timeline_icon_retweet.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3EA2CC1A1CCD07001F76DE /* timeline_icon_retweet.png */; };
@@ -426,8 +431,16 @@
 		5C090E081A13AE4D000BB15B /* common_card_background_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "common_card_background_highlighted@2x.png"; sourceTree = "<group>"; };
 		5C090E0A1A13B4A4000BB15B /* timeline_image_loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeline_image_loading.png; sourceTree = "<group>"; };
 		5C090E0C1A13B4AC000BB15B /* timeline_image_loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_image_loading@2x.png"; sourceTree = "<group>"; };
-		5C2A74FB19FBC59C001950EB /* ProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileView.h; sourceTree = "<group>"; };
-		5C2A74FC19FBC59C001950EB /* ProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
+		5C2A74FB19FBC59C001950EB /* ProfileImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileImageView.h; sourceTree = "<group>"; };
+		5C2A74FC19FBC59C001950EB /* ProfileImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileImageView.m; sourceTree = "<group>"; };
+		5C2CEF181A6C9CFA00F773AE /* ProfilePageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfilePageController.h; sourceTree = "<group>"; };
+		5C2CEF191A6C9CFA00F773AE /* ProfilePageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfilePageController.m; sourceTree = "<group>"; };
+		5C2CEF1E1A6CABFE00F773AE /* ProfileTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTool.h; sourceTree = "<group>"; };
+		5C2CEF1F1A6CABFE00F773AE /* ProfileTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTool.m; sourceTree = "<group>"; };
+		5C388C5C1A6D4182007F4817 /* ProfileHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileHeadView.h; sourceTree = "<group>"; };
+		5C388C5D1A6D4182007F4817 /* ProfileHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeadView.m; sourceTree = "<group>"; };
+		5C388C5F1A6D4323007F4817 /* ProfileHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeadView.xib; sourceTree = "<group>"; };
+		5C388C611A6D4594007F4817 /* ProfilePageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfilePageController.xib; sourceTree = "<group>"; };
 		5C3EA2CA1A1CCD07001F76DE /* timeline_icon_comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeline_icon_comment.png; sourceTree = "<group>"; };
 		5C3EA2CB1A1CCD07001F76DE /* timeline_icon_comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_icon_comment@2x.png"; sourceTree = "<group>"; };
 		5C3EA2CC1A1CCD07001F76DE /* timeline_icon_retweet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeline_icon_retweet.png; sourceTree = "<group>"; };
@@ -933,6 +946,7 @@
 				17770DB319EAE30F000E8296 /* NewFeature */,
 				174ABA9219EFF98700ABF104 /* Main */,
 				17D6118219F13B5B0042689C /* Home */,
+				5C2CEF161A6C9CAC00F773AE /* Profile */,
 				17D6118719F13BB70042689C /* More */,
 				173631F419F37D5C00E38161 /* Oauth */,
 				17770DB519EAE30F000E8296 /* Other */,
@@ -1083,8 +1097,8 @@
 			children = (
 				5C0800E019F931CC001630C3 /* StatusCell.h */,
 				5C0800E119F931CC001630C3 /* StatusCell.m */,
-				5C2A74FB19FBC59C001950EB /* ProfileView.h */,
-				5C2A74FC19FBC59C001950EB /* ProfileView.m */,
+				5C2A74FB19FBC59C001950EB /* ProfileImageView.h */,
+				5C2A74FC19FBC59C001950EB /* ProfileImageView.m */,
 				5C96B4CA19FE80E900BBC397 /* PictureListView.h */,
 				5C96B4CB19FE80E900BBC397 /* PictureListView.m */,
 				5C8C6C8E1A125F8100039822 /* PictureListItem.h */,
@@ -1093,6 +1107,45 @@
 				5CA1AF091A1B8AA400A7642B /* StatusOptionBar.m */,
 				5CCB12171A6A759000997ABF /* CommentCell.h */,
 				5CCB12181A6A759000997ABF /* CommentCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5C2CEF161A6C9CAC00F773AE /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				5C388C5B1A6D4127007F4817 /* View */,
+				5C2CEF1D1A6CABEA00F773AE /* Tool */,
+				5C2CEF171A6C9CC700F773AE /* Controller */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		5C2CEF171A6C9CC700F773AE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5C2CEF181A6C9CFA00F773AE /* ProfilePageController.h */,
+				5C2CEF191A6C9CFA00F773AE /* ProfilePageController.m */,
+				5C388C611A6D4594007F4817 /* ProfilePageController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5C2CEF1D1A6CABEA00F773AE /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				5C2CEF1E1A6CABFE00F773AE /* ProfileTool.h */,
+				5C2CEF1F1A6CABFE00F773AE /* ProfileTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		5C388C5B1A6D4127007F4817 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5C388C5C1A6D4182007F4817 /* ProfileHeadView.h */,
+				5C388C5D1A6D4182007F4817 /* ProfileHeadView.m */,
+				5C388C5F1A6D4323007F4817 /* ProfileHeadView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1256,6 +1309,7 @@
 				176E3EB219EC1F580002EE0D /* new_features_0.jpg in Resources */,
 				1726DE7519F1708800894875 /* navigationbar_button_background_disable.png in Resources */,
 				174ABACD19EFFC7500ABF104 /* tabbar_message_center@2x.png in Resources */,
+				5C388C601A6D4323007F4817 /* ProfileHeadView.xib in Resources */,
 				176E3EDB19EC29800002EE0D /* new_feature_pagecontrol_checked_point@2x.png in Resources */,
 				5C95C5C319F7F38800C7E1CB /* avatar_vgirl.png in Resources */,
 				1726DE6B19F1708800894875 /* navigationbar_back_highlighted.png in Resources */,
@@ -1291,6 +1345,7 @@
 				5C95C5C119F7F38800C7E1CB /* avatar_grassroot.png in Resources */,
 				5C090E071A13AE43000BB15B /* common_card_background_highlighted.png in Resources */,
 				1726DE7419F1708800894875 /* navigationbar_button_background@2x.png in Resources */,
+				5C388C621A6D4594007F4817 /* ProfilePageController.xib in Resources */,
 				5C090E0B1A13B4A4000BB15B /* timeline_image_loading.png in Resources */,
 				5C090E031A13AE20000BB15B /* common_card_background@2x.png in Resources */,
 				5C95C5C819F7F38800C7E1CB /* common_icon_female@2x.png in Resources */,
@@ -1478,7 +1533,9 @@
 				17AD6EA319F5346500C5C71C /* StatusModel.m in Sources */,
 				5C8C6C901A125F8100039822 /* PictureListItem.m in Sources */,
 				17EE707C19F2201500CADA06 /* BaseTabBarController.m in Sources */,
+				5C2CEF201A6CABFE00F773AE /* ProfileTool.m in Sources */,
 				5C0800E519F9391B001630C3 /* StatusCellFrame.m in Sources */,
+				5C388C5E1A6D4182007F4817 /* ProfileHeadView.m in Sources */,
 				1736321219F3909700E38161 /* AFHTTPClient.m in Sources */,
 				5CCB11FD1A68EF5000997ABF /* UIImageView+MJWebCache.m in Sources */,
 				5CCB12331A6B8DFF00997ABF /* MJRefreshFooterView.m in Sources */,
@@ -1505,13 +1562,14 @@
 				1736321919F3909700E38161 /* AFXMLRequestOperation.m in Sources */,
 				174ABA9619EFF98700ABF104 /* MainController.m in Sources */,
 				5CA1AF0A1A1B8AA400A7642B /* StatusOptionBar.m in Sources */,
+				5C2CEF1B1A6C9CFA00F773AE /* ProfilePageController.m in Sources */,
 				17770DB919EAE30F000E8296 /* AppDelegate.m in Sources */,
 				17D6118619F13B710042689C /* HomeController.m in Sources */,
 				1736321319F3909700E38161 /* AFHTTPRequestOperation.m in Sources */,
 				5CCB12361A6B8DFF00997ABF /* UIScrollView+MJRefresh.m in Sources */,
 				5CCB11FC1A68EF5000997ABF /* SDWebImageManager+MJ.m in Sources */,
 				5CCB12031A68FD2900997ABF /* UIColor+expanded.m in Sources */,
-				5C2A74FD19FBC59C001950EB /* ProfileView.m in Sources */,
+				5C2A74FD19FBC59C001950EB /* ProfileImageView.m in Sources */,
 				5C0800E219F931CC001630C3 /* StatusCell.m in Sources */,
 				1736321519F3909700E38161 /* AFJSONRequestOperation.m in Sources */,
 				5CCB121A1A6A759000997ABF /* CommentCell.m in Sources */,

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfilePageController">
+            <connections>
+                <outlet property="headView" destination="bcZ-kx-4KY" id="Kq6-Te-bO8"/>
+                <outlet property="tableView" destination="AJC-ep-M8g" id="HEt-Fq-2lQ"/>
+                <outlet property="view" destination="ocu-u5-OL8" id="7Bu-zJ-BIq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ocu-u5-OL8">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bcZ-kx-4KY" customClass="ProfileHeadView">
+                    <rect key="frame" x="0.0" y="64" width="600" height="200"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="wPN-ta-n6f"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AJC-ep-M8g">
+                    <rect key="frame" x="0.0" y="264" width="600" height="272"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="AJC-ep-M8g" firstAttribute="leading" secondItem="ocu-u5-OL8" secondAttribute="leading" id="62p-2I-lOd"/>
+                <constraint firstAttribute="trailing" secondItem="bcZ-kx-4KY" secondAttribute="trailing" id="Rsr-yz-gi7"/>
+                <constraint firstItem="AJC-ep-M8g" firstAttribute="top" secondItem="bcZ-kx-4KY" secondAttribute="bottom" id="Xxw-7c-gNq"/>
+                <constraint firstItem="bcZ-kx-4KY" firstAttribute="leading" secondItem="ocu-u5-OL8" secondAttribute="leading" id="bfe-Dv-5Jp"/>
+                <constraint firstAttribute="trailing" secondItem="AJC-ep-M8g" secondAttribute="trailing" id="cNi-K1-zhs"/>
+                <constraint firstAttribute="bottom" secondItem="AJC-ep-M8g" secondAttribute="bottom" id="grY-aQ-GbV"/>
+                <constraint firstItem="bcZ-kx-4KY" firstAttribute="top" secondItem="ocu-u5-OL8" secondAttribute="top" constant="64" id="hgs-l7-g6y"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <point key="canvasLocation" x="477" y="332"/>
+        </view>
+    </objects>
+</document>

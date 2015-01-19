@@ -7,7 +7,7 @@
 //
 
 #import "CommentCell.h"
-#import "ProfileView.h"
+#import "ProfileImageView.h"
 #import "NSString+Common.h"
 
 #define kMemberImageWidth 14
@@ -15,7 +15,7 @@
 
 @interface CommentCell ()
 
-@property (strong, nonatomic) ProfileView *profileView;
+@property (strong, nonatomic) ProfileImageView *profileView;
 @property (strong, nonatomic) UILabel *userName;
 @property (strong, nonatomic) UILabel *commentText;
 
@@ -26,7 +26,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self ) {
-        _profileView = [[ProfileView alloc]init];
+        _profileView = [[ProfileImageView alloc]init];
         [self addSubview:_profileView];
         _userName = [[UILabel alloc]init];
         [self addSubview:_userName];

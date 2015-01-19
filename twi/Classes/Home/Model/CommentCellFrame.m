@@ -8,7 +8,7 @@
 
 #import "CommentCellFrame.h"
 #import "Common.h"
-#import "ProfileView.h"
+#import "ProfileImageView.h"
 
 @implementation CommentCellFrame
 

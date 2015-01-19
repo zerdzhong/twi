@@ -27,7 +27,7 @@ typedef enum{
     kProfileTypeBig
 } ProfileType;
 
-@interface ProfileView : UIView
+@interface ProfileImageView : UIView
 
 @property (nonatomic, strong, readonly) UserModel *user;
 @property (nonatomic, assign, readonly) ProfileType profileType;

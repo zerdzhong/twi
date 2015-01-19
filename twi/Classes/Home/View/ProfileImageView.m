@@ -6,10 +6,10 @@
 //  Copyright (c) 2014年 zerd. All rights reserved.
 //
 
-#import "ProfileView.h"
+#import "ProfileImageView.h"
 #import "HttpTool.h"
 
-@interface ProfileView ()
+@interface ProfileImageView ()
 
 @property (nonatomic, strong) UIImageView *profileImageView;
 @property (nonatomic, strong) UIImageView *vertifyImageView;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation ProfileView
+@implementation ProfileImageView
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
