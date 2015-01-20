@@ -26,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self.buttonBarView.selectedBar setBackgroundColor:[UIColor orangeColor]];
 }
 
 - (void)didReceiveMemoryWarning {
