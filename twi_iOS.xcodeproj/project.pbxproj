@@ -161,6 +161,9 @@
 		5C388C5E1A6D4182007F4817 /* ProfileHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C388C5D1A6D4182007F4817 /* ProfileHeadView.m */; };
 		5C388C601A6D4323007F4817 /* ProfileHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C388C5F1A6D4323007F4817 /* ProfileHeadView.xib */; };
 		5C388C621A6D4594007F4817 /* ProfilePageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C388C611A6D4594007F4817 /* ProfilePageController.xib */; };
+		5C388C6F1A6E03FF007F4817 /* ProfileContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C388C6D1A6E03FF007F4817 /* ProfileContentController.m */; };
+		5C388C731A6E29D6007F4817 /* ProfileChildTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C388C721A6E29D6007F4817 /* ProfileChildTableController.m */; };
+		5C388C751A6E2DAF007F4817 /* ProfileContent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C388C741A6E2DAF007F4817 /* ProfileContent.storyboard */; };
 		5C3EA2D01A1CCD07001F76DE /* timeline_icon_comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3EA2CA1A1CCD07001F76DE /* timeline_icon_comment.png */; };
 		5C3EA2D11A1CCD07001F76DE /* timeline_icon_comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3EA2CB1A1CCD07001F76DE /* timeline_icon_comment@2x.png */; };
 		5C3EA2D21A1CCD07001F76DE /* timeline_icon_retweet.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3EA2CC1A1CCD07001F76DE /* timeline_icon_retweet.png */; };
@@ -441,6 +444,11 @@
 		5C388C5D1A6D4182007F4817 /* ProfileHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileHeadView.m; sourceTree = "<group>"; };
 		5C388C5F1A6D4323007F4817 /* ProfileHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeadView.xib; sourceTree = "<group>"; };
 		5C388C611A6D4594007F4817 /* ProfilePageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfilePageController.xib; sourceTree = "<group>"; };
+		5C388C6C1A6E03FF007F4817 /* ProfileContentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileContentController.h; sourceTree = "<group>"; };
+		5C388C6D1A6E03FF007F4817 /* ProfileContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileContentController.m; sourceTree = "<group>"; };
+		5C388C711A6E29D6007F4817 /* ProfileChildTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileChildTableController.h; path = twi/Classes/Profile/Controller/ProfileChildTableController.h; sourceTree = SOURCE_ROOT; };
+		5C388C721A6E29D6007F4817 /* ProfileChildTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileChildTableController.m; path = twi/Classes/Profile/Controller/ProfileChildTableController.m; sourceTree = SOURCE_ROOT; };
+		5C388C741A6E2DAF007F4817 /* ProfileContent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileContent.storyboard; sourceTree = "<group>"; };
 		5C3EA2CA1A1CCD07001F76DE /* timeline_icon_comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeline_icon_comment.png; sourceTree = "<group>"; };
 		5C3EA2CB1A1CCD07001F76DE /* timeline_icon_comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_icon_comment@2x.png"; sourceTree = "<group>"; };
 		5C3EA2CC1A1CCD07001F76DE /* timeline_icon_retweet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeline_icon_retweet.png; sourceTree = "<group>"; };
@@ -1127,6 +1135,11 @@
 				5C2CEF181A6C9CFA00F773AE /* ProfilePageController.h */,
 				5C2CEF191A6C9CFA00F773AE /* ProfilePageController.m */,
 				5C388C611A6D4594007F4817 /* ProfilePageController.xib */,
+				5C388C6C1A6E03FF007F4817 /* ProfileContentController.h */,
+				5C388C6D1A6E03FF007F4817 /* ProfileContentController.m */,
+				5C388C741A6E2DAF007F4817 /* ProfileContent.storyboard */,
+				5C388C711A6E29D6007F4817 /* ProfileChildTableController.h */,
+				5C388C721A6E29D6007F4817 /* ProfileChildTableController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1438,6 +1451,7 @@
 				1726DE7F19F1708800894875 /* navigationbar_more.png in Resources */,
 				5C3EA2ED1A1CCD64001F76DE /* timeline_card_leftbottom@2x.png in Resources */,
 				1726DE8019F1708800894875 /* navigationbar_more@2x.png in Resources */,
+				5C388C751A6E2DAF007F4817 /* ProfileContent.storyboard in Resources */,
 				176E3EB119EC1F580002EE0D /* new_features_0-568h@2x.jpg in Resources */,
 				5C3EA2EB1A1CCD64001F76DE /* timeline_card_leftbottom_highlighted@2x.png in Resources */,
 				174ABADD19EFFC7500ABF104 /* tabbar_profile_selected@2x.png in Resources */,
@@ -1560,6 +1574,7 @@
 				173631F819F37D9500E38161 /* OauthController.m in Sources */,
 				5CCB12111A690E7C00997ABF /* TweetDetailController.m in Sources */,
 				1736321919F3909700E38161 /* AFXMLRequestOperation.m in Sources */,
+				5C388C6F1A6E03FF007F4817 /* ProfileContentController.m in Sources */,
 				174ABA9619EFF98700ABF104 /* MainController.m in Sources */,
 				5CA1AF0A1A1B8AA400A7642B /* StatusOptionBar.m in Sources */,
 				5C2CEF1B1A6C9CFA00F773AE /* ProfilePageController.m in Sources */,
@@ -1568,6 +1583,7 @@
 				1736321319F3909700E38161 /* AFHTTPRequestOperation.m in Sources */,
 				5CCB12361A6B8DFF00997ABF /* UIScrollView+MJRefresh.m in Sources */,
 				5CCB11FC1A68EF5000997ABF /* SDWebImageManager+MJ.m in Sources */,
+				5C388C731A6E29D6007F4817 /* ProfileChildTableController.m in Sources */,
 				5CCB12031A68FD2900997ABF /* UIColor+expanded.m in Sources */,
 				5C2A74FD19FBC59C001950EB /* ProfileImageView.m in Sources */,
 				5C0800E219F931CC001630C3 /* StatusCell.m in Sources */,

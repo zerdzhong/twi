@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profile Content Controller-->
+        <scene sceneID="Ge3-oI-LI0">
+            <objects>
+                <viewController storyboardIdentifier="ProfileContent" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nLa-mg-uJC" customClass="ProfileContentController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="byC-Ys-W12"/>
+                        <viewControllerLayoutGuide type="bottom" id="BDi-qT-YnU"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="IpD-nC-J20">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zXi-tG-Jch" customClass="XLButtonBarView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="43"/>
+                                <color key="backgroundColor" red="0.027450980390000001" green="0.72549019609999998" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="yF6-To-zFM"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GeX-70-I6f">
+                                    <size key="itemSize" width="79" height="42"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="35" minY="0.0" maxX="35" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="IIu-dX-ahx" customClass="XLButtonBarViewCell">
+                                        <rect key="frame" x="0.0" y="1" width="79" height="42"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="79" height="42"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCa-8K-oEz">
+                                                    <rect key="frame" x="17" y="10" width="44" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="wCa-8K-oEz" secondAttribute="centerX" constant="0.5" id="d5E-99-Msc"/>
+                                            <constraint firstAttribute="centerY" secondItem="wCa-8K-oEz" secondAttribute="centerY" constant="0.5" id="stn-g7-4fU"/>
+                                        </constraints>
+                                        <size key="customSize" width="79" height="42"/>
+                                        <connections>
+                                            <outlet property="label" destination="wCa-8K-oEz" id="GWR-9E-PmW"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuE-yD-acJ" customClass="UIScrollView">
+                                <rect key="frame" x="-5" y="63" width="610" height="537"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zXi-tG-Jch" firstAttribute="top" secondItem="byC-Ys-W12" secondAttribute="bottom" id="2YD-HE-FWp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zXi-tG-Jch" secondAttribute="trailing" constant="-16" id="IfQ-1e-CNV"/>
+                            <constraint firstItem="zXi-tG-Jch" firstAttribute="leading" secondItem="IpD-nC-J20" secondAttribute="leadingMargin" constant="-16" id="JDL-kt-ScJ"/>
+                            <constraint firstItem="BDi-qT-YnU" firstAttribute="top" secondItem="TuE-yD-acJ" secondAttribute="bottom" id="Zwg-iN-QWJ"/>
+                            <constraint firstItem="TuE-yD-acJ" firstAttribute="leading" secondItem="IpD-nC-J20" secondAttribute="leading" constant="-5" id="h4P-d8-YBH"/>
+                            <constraint firstItem="TuE-yD-acJ" firstAttribute="top" secondItem="zXi-tG-Jch" secondAttribute="bottom" id="kte-3S-uzA"/>
+                            <constraint firstAttribute="trailing" secondItem="TuE-yD-acJ" secondAttribute="trailing" constant="-5" id="t7m-lU-yhC"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="buttonBarView" destination="zXi-tG-Jch" id="dVu-tE-Clg"/>
+                        <outlet property="containerView" destination="TuE-yD-acJ" id="2ZO-OH-LIc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xcO-ee-xVw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3033" y="919"/>
+        </scene>
+    </scenes>
+</document>

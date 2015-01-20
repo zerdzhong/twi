@@ -11,12 +11,12 @@
 #import "WeiboAccountTool.h"
 #import "MJRefresh.h"
 #import "ProfileHeadView.h"
-
+#import "ProfileContentController.h"
 
 @interface ProfilePageController ()
 
 @property (weak, nonatomic) IBOutlet ProfileHeadView *headView;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @property (nonatomic, strong)UserModel *currentUser;
 
@@ -38,12 +38,17 @@
                                MyLog(@"failure:%@",error.description);
                            }];
     
-//    self.tableView.backgroundColor = [UIColor whiteColor];
-//    self.tableView.tableFooterView = [UIView new];
-//    
-//    //添加上下拉刷新
-//    [self.tableView addFooterWithTarget:self action:@selector(onFooterRefresh)];
-//    [self.tableView addHeaderWithTarget:self action:@selector(onHeaderRefresh)];
+    UIStoryboard *profileStoryBoard = [UIStoryboard storyboardWithName:@"ProfileContent" bundle:nil];
+    ProfileContentController *contentController = [profileStoryBoard instantiateViewControllerWithIdentifier:@"ProfileContent"];
+    [contentController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self addChildViewController:contentController];
+    [self.containerView addSubview:contentController.view];
+    
+    [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:contentController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
+    
+    [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:contentController.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
+    [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:contentController.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+    [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:contentController.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
     
 }
 
@@ -54,23 +59,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-#pragma mark- TableView
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0) {
-        return 1;
-    }else{
-        return 0;
-    }
-}
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
 }
 
 @end

@@ -7,8 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfilePageController">
             <connections>
+                <outlet property="containerView" destination="Ebh-jU-NkU" id="uWy-5x-Zuh"/>
                 <outlet property="headView" destination="bcZ-kx-4KY" id="Kq6-Te-bO8"/>
-                <outlet property="tableView" destination="AJC-ep-M8g" id="HEt-Fq-2lQ"/>
                 <outlet property="view" destination="ocu-u5-OL8" id="7Bu-zJ-BIq"/>
             </connections>
         </placeholder>
@@ -24,23 +24,40 @@
                         <constraint firstAttribute="height" constant="200" id="wPN-ta-n6f"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="AJC-ep-M8g">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ebh-jU-NkU" userLabel="Container View">
                     <rect key="frame" x="0.0" y="264" width="600" height="272"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="AJC-ep-M8g" firstAttribute="leading" secondItem="ocu-u5-OL8" secondAttribute="leading" id="62p-2I-lOd"/>
+                <constraint firstItem="Ebh-jU-NkU" firstAttribute="top" secondItem="bcZ-kx-4KY" secondAttribute="bottom" id="3Pf-vT-Gf1"/>
+                <constraint firstAttribute="trailing" secondItem="Ebh-jU-NkU" secondAttribute="trailing" id="DNr-Ch-fwP"/>
                 <constraint firstAttribute="trailing" secondItem="bcZ-kx-4KY" secondAttribute="trailing" id="Rsr-yz-gi7"/>
-                <constraint firstItem="AJC-ep-M8g" firstAttribute="top" secondItem="bcZ-kx-4KY" secondAttribute="bottom" id="Xxw-7c-gNq"/>
                 <constraint firstItem="bcZ-kx-4KY" firstAttribute="leading" secondItem="ocu-u5-OL8" secondAttribute="leading" id="bfe-Dv-5Jp"/>
-                <constraint firstAttribute="trailing" secondItem="AJC-ep-M8g" secondAttribute="trailing" id="cNi-K1-zhs"/>
-                <constraint firstAttribute="bottom" secondItem="AJC-ep-M8g" secondAttribute="bottom" id="grY-aQ-GbV"/>
+                <constraint firstItem="Ebh-jU-NkU" firstAttribute="leading" secondItem="ocu-u5-OL8" secondAttribute="leading" id="eqn-gy-R4i"/>
                 <constraint firstItem="bcZ-kx-4KY" firstAttribute="top" secondItem="ocu-u5-OL8" secondAttribute="top" constant="64" id="hgs-l7-g6y"/>
+                <constraint firstAttribute="bottom" secondItem="Ebh-jU-NkU" secondAttribute="bottom" id="yQI-GE-i3E"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <point key="canvasLocation" x="477" y="332"/>
         </view>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="iVk-d0-HCV">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQv-fI-1cN">
+                        <rect key="frame" x="4" y="14" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+        </collectionViewCell>
     </objects>
 </document>
