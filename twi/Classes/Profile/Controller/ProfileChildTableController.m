@@ -32,19 +32,30 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return 0;
 }
 
+
+#pragma mark- XLPager
 - (NSString *)titleForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController{
     return self.title;
+}
+
+#pragma mark- Table view delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    MyLog(@"%@",NSStringFromCGPoint(scrollView.contentOffset));
+    if(self.scrollTopBlock && scrollView.contentOffset.y < 0){
+        self.scrollTopBlock();
+    }else if(self.scrollDownBlock && scrollView.contentOffset.y > 0){
+        self.scrollDownBlock();
+    }
 }
 
 /*

@@ -11,4 +11,7 @@
 
 @interface ProfileChildTableController : UITableViewController <XLPagerTabStripChildItem>
 
+@property (nonatomic, copy) void(^scrollTopBlock)();
+@property (nonatomic, copy) void(^scrollDownBlock)();
+
 @end
