@@ -7,8 +7,15 @@
 //
 
 #import "ProfileChildTableController.h"
+#import "TweetTool.h"
+#import "WeiboAccountTool.h"
+#import "StatusCellFrame.h"
+#import "StatusCell.h"
+#import "TweetDetailController.h"
 
 @interface ProfileChildTableController ()
+
+@property (nonatomic, strong) NSMutableArray *statusFrameArray;
 
 @end
 
@@ -18,10 +25,32 @@
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+     self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.tableView.tableFooterView = [UIView new];
+    self.tableView.separatorStyle= UITableViewCellSeparatorStyleNone;
+    
+    [TweetTool getTweetsWithUid:[WeiboAccountTool sharedWeiboAccountTool].currentCount.uid page:1 success:^(NSArray *statusArray) {
+        
+        _statusFrameArray = [NSMutableArray array];
+        
+        for (StatusModel *status in statusArray) {
+            StatusCellFrame *cellFrame = [[StatusCellFrame alloc]init];
+            cellFrame.status = status;
+            [_statusFrameArray addObject:cellFrame];
+        }
+        
+        //刷新tableview
+        [self.tableView reloadData];
+
+        
+    } failuer:^(NSError *error) {
+        MyLog(@"failure");
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,17 +58,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return 0;
-}
 
 
 #pragma mark- XLPager
@@ -50,11 +68,52 @@
 #pragma mark- Table view delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if(self.scrollTopBlock && scrollView.contentOffset.y < 0){
+    if(self.scrollTopBlock && scrollView.contentOffset.y < -20){
         self.scrollTopBlock();
     }else if(self.scrollDownBlock && scrollView.contentOffset.y > 0){
         self.scrollDownBlock();
     }
+}
+
+
+#pragma mark- Table view data source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _statusFrameArray.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [_statusFrameArray[indexPath.row] cellHeight];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIdentifier = @"home_cell";
+    StatusCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil) {
+        cell = [[StatusCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    cell.statusCellFrame = _statusFrameArray[indexPath.row];
+    //    cell.selectedBackgroundView = [UIView new];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 100;
+}
+
+#pragma mark- Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //调到微博详情
+    TweetDetailController *tweetVC = [[TweetDetailController alloc]init];
+    
+    tweetVC.currentStatus = [_statusFrameArray[indexPath.row] valueForKey:@"status"];
+    
+    [self.navigationController pushViewController:tweetVC animated:YES];
+    
 }
 
 /*

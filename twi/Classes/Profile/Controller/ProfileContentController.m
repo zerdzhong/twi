@@ -38,23 +38,25 @@
 
 -(NSArray *)childViewControllersForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController
 {
-    ProfileChildTableController *child1 = [[ProfileChildTableController alloc]init];
-    child1.scrollDownBlock = self.scrollDownBlock;
-    child1.scrollTopBlock = self.scrollTopBlock;
-    child1.title = @"主页";
+//    ProfileChildTableController *child1 = [[ProfileChildTableController alloc]init];
+//    child1.scrollDownBlock = self.scrollDownBlock;
+//    child1.scrollTopBlock = self.scrollTopBlock;
+//    child1.title = @"主页";
     
     ProfileChildTableController *child2 = [[ProfileChildTableController alloc]init];
     child2.title = @"微博";
     child2.scrollTopBlock = self.scrollTopBlock;
     child2.scrollDownBlock = self.scrollDownBlock;
 
-    ProfileChildTableController *child3 = [[ProfileChildTableController alloc]init];
-    child3.title = @"相册";
-    child3.scrollTopBlock = self.scrollTopBlock;
-    child3.scrollDownBlock = self.scrollDownBlock;
+//    ProfileChildTableController *child3 = [[ProfileChildTableController alloc]init];
+//    child3.title = @"相册";
+//    child3.scrollTopBlock = self.scrollTopBlock;
+//    child3.scrollDownBlock = self.scrollDownBlock;
     
 
-    return @[child1,child2,child3];
+//    return @[child1,child2,child3];
+    return @[child2];
+    
 }
 
 /*

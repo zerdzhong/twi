@@ -52,6 +52,26 @@
              }
      ];
 }
+
++ (void)getTweetsWithUid:(NSString *)uid page:(int)page success:(SuccessBlock)success failuer:(FailureBlock)failure{
+    [HttpTool getWithPath:@"2/statuses/user_timeline.json"
+                   params:@{@"uid":uid}
+             successBlock:^(id JSON) {
+                 if (success == nil) return ;
+                 NSMutableArray *array = [[NSMutableArray alloc]init];
+                 NSArray *statuses = JSON[@"statuses"];
+                 for (NSDictionary *dict in statuses) {
+                     StatusModel *status = [[StatusModel alloc]initWithDict:dict];
+                     [array addObject:status];
+                 }
+                 success(array);
+             } failureBlock:^(NSError *error) {
+                 if (failure == nil) return ;
+                 failure(error);
+             }
+     ];
+
+}
 #pragma mark- 获取评论
 + (void)getCommentsWithID:(int64_t )ID page:(int)page success:(SuccessBlock)success failuer:(FailureBlock)failure{
     [HttpTool getWithPath:@"2/comments/show.json"

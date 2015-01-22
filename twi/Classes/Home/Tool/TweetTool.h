@@ -17,8 +17,9 @@ typedef void (^FailureBlock)(NSError *error);
 /**微博*/
 + (void)getTweetsWithPage:(int)page success:(SuccessBlock)success failure:(FailureBlock)failure;
 + (void)getPublicTweetsWithCount:(int)count success:(SuccessBlock)success failure:(FailureBlock)failure;
++ (void)getTweetsWithUid:(NSString *)uid page:(int)page success:(SuccessBlock)success failuer:(FailureBlock)failure;
 
 /**评论*/
-+ (void)getCommentsWithID:(int64_t )ID page:(int)page  success:(SuccessBlock)success failuer:(FailureBlock)failure;
++ (void)getCommentsWithID:(int64_t )ID page:(int)page success:(SuccessBlock)success failuer:(FailureBlock)failure;
 
 @end
