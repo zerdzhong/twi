@@ -50,7 +50,6 @@
 #pragma mark- Table view delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    MyLog(@"%@",NSStringFromCGPoint(scrollView.contentOffset));
     if(self.scrollTopBlock && scrollView.contentOffset.y < 0){
         self.scrollTopBlock();
     }else if(self.scrollDownBlock && scrollView.contentOffset.y > 0){

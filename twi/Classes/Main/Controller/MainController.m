@@ -11,6 +11,7 @@
 #import "HomeController.h"
 #import "MoreController.h"
 #import "ProfilePageController.h"
+#import "SquareController.h"
 
 @interface MainController ()
 
@@ -46,7 +47,7 @@
     UINavigationController *nav3 = [[UINavigationController alloc]initWithRootViewController:meVC];
     [self addChildViewController:nav3];
     //4广场
-    UIViewController *squareVC = [[UIViewController alloc]init];
+    SquareController *squareVC = [[SquareController alloc]init];
     squareVC.view.backgroundColor = [UIColor greenColor];
     squareVC.title = @"广场";
     UINavigationController *nav4 = [[UINavigationController alloc]initWithRootViewController:squareVC];

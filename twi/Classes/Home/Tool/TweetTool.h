@@ -14,8 +14,11 @@ typedef void (^FailureBlock)(NSError *error);
 
 @interface TweetTool : NSObject
 
-+ (void)getTweetsWithSuccess:(SuccessBlock)success failure:(FailureBlock)failure;
+/**微博*/
 + (void)getTweetsWithPage:(int)page success:(SuccessBlock)success failure:(FailureBlock)failure;
++ (void)getPublicTweetsWithCount:(int)count success:(SuccessBlock)success failure:(FailureBlock)failure;
+
+/**评论*/
 + (void)getCommentsWithID:(int64_t )ID page:(int)page  success:(SuccessBlock)success failuer:(FailureBlock)failure;
 
 @end

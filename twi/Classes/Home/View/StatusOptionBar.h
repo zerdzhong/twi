@@ -7,7 +7,10 @@
 //  微博底部操作条
 
 #import <UIKit/UIKit.h>
+#import "StatusModel.h"
 
 @interface StatusOptionBar : UIImageView
+
+@property (nonatomic, strong) StatusModel *tweet;
 
 @end

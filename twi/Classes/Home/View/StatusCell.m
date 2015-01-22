@@ -183,6 +183,7 @@
     
     //底部操作条
     _statusOptionBar.frame =  CGRectMake(0, [statusCellFrame cellHeight] - kOptionBarHeight - kCellMargin, 0, 0);
+    _statusOptionBar.tweet = status;
     
     //配图
     if (status.picURLs.count) {

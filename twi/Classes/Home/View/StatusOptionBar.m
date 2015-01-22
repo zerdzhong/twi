@@ -10,6 +10,17 @@
 #import "UIImage+ZD.h"
 #import "NSString+ZD.h"
 
+
+@interface StatusOptionBar ()
+
+@property (nonatomic, strong) UIButton *retweet;
+@property (nonatomic, strong) UIButton *comment;
+@property (nonatomic, strong) UIButton *upvote;
+
+@end
+
+
+
 @implementation StatusOptionBar
 
 -(instancetype)initWithFrame:(CGRect)frame{
@@ -22,15 +33,15 @@
         self.userInteractionEnabled = YES;
         
         //添加三个按钮
-        [self addButton:@"转发" icon:@"timeline_icon_retweet.png" bg:@"timeline_card_leftbottom.png" index:0];
-        [self addButton:@"评论" icon:@"timeline_icon_comment.png" bg:@"timeline_card_middlebottom.png" index:1];
-        [self addButton:@"赞" icon:@"timeline_icon_unlike.png" bg:@"timeline_card_rightbottom.png" index:2];
+        self.retweet = [self addButton:@"转发" icon:@"timeline_icon_retweet.png" bg:@"timeline_card_leftbottom.png" index:0];
+        self.comment = [self addButton:@"评论" icon:@"timeline_icon_comment.png" bg:@"timeline_card_middlebottom.png" index:1];
+        self.upvote = [self addButton:@"赞" icon:@"timeline_icon_unlike.png" bg:@"timeline_card_rightbottom.png" index:2];
     }
     
     return self;
 }
 
-- (void)addButton:(NSString *)title icon:(NSString *)icon bg:(NSString *)bg index:(int)index{
+- (UIButton *)addButton:(NSString *)title icon:(NSString *)icon bg:(NSString *)bg index:(int)index{
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:title forState:UIControlStateNormal];
@@ -50,12 +61,44 @@
         imageView.center = CGPointMake(btn.frame.origin.x, kOptionBarHeight * 0.5);
         [self addSubview:imageView];
     }
+    
+    return btn;
 }
 
 - (void)setFrame:(CGRect)frame{
     frame.size.width = [UIScreen mainScreen].bounds.size.width - 2*kTableBorderWidth;
     frame.size.height = kOptionBarHeight;
     [super setFrame:frame];
+}
+
+-(void)setTweet:(StatusModel *)tweet{
+    _tweet = tweet;
+    //转发
+
+    NSString *retweetTitle = _tweet.repostsCount ? [self simpleStringWithCount:_tweet.repostsCount]:@"转发";
+    [_retweet setTitle:retweetTitle forState:UIControlStateNormal];
+
+    //评论
+    NSString *commentTitle = _tweet.commentsCount ? [self simpleStringWithCount:_tweet.commentsCount]:@"评论";
+    [_comment setTitle:commentTitle forState:UIControlStateNormal];
+    
+    //赞
+    NSString *upvoteTitle = _tweet.attitudesCount ? [self simpleStringWithCount:_tweet.attitudesCount]:@"赞";
+    [_upvote setTitle:upvoteTitle forState:UIControlStateNormal];
+}
+
+- (NSString *)simpleStringWithCount:(int)count{
+    NSString *reslut = nil;
+    if (count >= 10000) {   //上万 保留小数点后一位
+        Float32 temp = count / 10000.0;
+        reslut = [NSString stringWithFormat:@"%.1f万",temp];
+        //不要.0
+        reslut = [reslut stringByReplacingOccurrencesOfString:@".0" withString:@""];
+    }else if (count > 0){
+        reslut = [NSString stringWithFormat:@"%d",count];
+    }
+    
+    return reslut;
 }
 
 @end

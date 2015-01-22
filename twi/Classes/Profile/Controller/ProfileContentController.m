@@ -34,6 +34,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+// 2/statuses/user_timeline.json 获取用户微博
+
 -(NSArray *)childViewControllersForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController
 {
     ProfileChildTableController *child1 = [[ProfileChildTableController alloc]init];
