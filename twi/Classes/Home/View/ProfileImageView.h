@@ -4,7 +4,7 @@
 //
 //  Created by zerd on 14-10-25.
 //  Copyright (c) 2014年 zerd. All rights reserved.
-//
+//  用户头像
 
 #import <UIKit/UIKit.h>
 #import "UserModel.h"

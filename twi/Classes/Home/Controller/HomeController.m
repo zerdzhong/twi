@@ -15,10 +15,10 @@
 #import "StatusCell.h"
 #import "TweetDetailController.h"
 #import "MJRefresh.h"
+#import "MBProgressHUD.h"
 
 @interface HomeController ()
 
-@property (nonatomic, strong) NSMutableArray *statusFrameArray;
 @property (nonatomic, assign) int page;
 
 @end
@@ -38,8 +38,8 @@
     //1.设置界面属性
     [self setUI];
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     //2.请求数据
-    
     [self onHeaderRefresh];
     
 }
@@ -79,7 +79,7 @@
         for (StatusModel *status in statusArray) {
             StatusCellFrame *cellFrame = [[StatusCellFrame alloc]init];
             cellFrame.status = status;
-            [_statusFrameArray addObject:cellFrame];
+            [self.statusFrameArray addObject:cellFrame];
         }
         
         //刷新tableview
@@ -93,23 +93,28 @@
 }
 
 - (void)onHeaderRefresh{
+    
+    __unsafe_unretained HomeController *weakSelf = self;
+    
     [TweetTool getTweetsWithPage:1 success:^(NSArray *statusArray) {
         //拿到最新微博数据的同时，计算frame
-        _statusFrameArray = [NSMutableArray array];
+        weakSelf.statusFrameArray = [NSMutableArray array];
         
         for (StatusModel *status in statusArray) {
             StatusCellFrame *cellFrame = [[StatusCellFrame alloc]init];
             cellFrame.status = status;
-            [_statusFrameArray addObject:cellFrame];
+            [weakSelf.statusFrameArray addObject:cellFrame];
         }
         
         //刷新tableview
-        [self.tableView reloadData];
-        [self.tableView headerEndRefreshing];
+        [weakSelf.tableView reloadData];
+        [weakSelf.tableView headerEndRefreshing];
+        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
         _page = 1;
     } failure:^(NSError *error) {
         //failure
-        [self.tableView headerEndRefreshing];
+        [weakSelf.tableView headerEndRefreshing];
+        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
     }];
 }
 
@@ -122,46 +127,6 @@
 - (void)popMenu{
     MyLog(@"菜单");
 }
-
-#pragma mark- Table view data source
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _statusFrameArray.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [_statusFrameArray[indexPath.row] cellHeight];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentifier = @"home_cell";
-    StatusCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[StatusCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    
-    cell.statusCellFrame = _statusFrameArray[indexPath.row];
-//    cell.selectedBackgroundView = [UIView new];
-    
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
-}
-
-#pragma mark- Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //调到微博详情
-    TweetDetailController *tweetVC = [[TweetDetailController alloc]init];
-    
-    tweetVC.currentStatus = [_statusFrameArray[indexPath.row] valueForKey:@"status"];
-    
-    [self.navigationController pushViewController:tweetVC animated:YES];
-    
-}
-
 //-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
 //}

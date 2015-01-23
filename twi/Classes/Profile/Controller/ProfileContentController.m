@@ -7,7 +7,8 @@
 //
 
 #import "ProfileContentController.h"
-#import "ProfileChildTableController.h"
+#import "ProfileFollowerController.h"
+#import "ProfileTweetController.h"
 
 @interface ProfileContentController ()
 
@@ -43,19 +44,19 @@
 //    child1.scrollTopBlock = self.scrollTopBlock;
 //    child1.title = @"主页";
     
-    ProfileChildTableController *child2 = [[ProfileChildTableController alloc]init];
+    ProfileTweetController *child2 = [[ProfileTweetController alloc]init];
     child2.title = @"微博";
     child2.scrollTopBlock = self.scrollTopBlock;
     child2.scrollDownBlock = self.scrollDownBlock;
 
-//    ProfileChildTableController *child3 = [[ProfileChildTableController alloc]init];
-//    child3.title = @"相册";
-//    child3.scrollTopBlock = self.scrollTopBlock;
-//    child3.scrollDownBlock = self.scrollDownBlock;
+    ProfileFollowerController *child3 = [[ProfileFollowerController alloc]init];
+    child3.title = @"粉丝";
+    child3.scrollTopBlock = self.scrollTopBlock;
+    child3.scrollDownBlock = self.scrollDownBlock;
     
 
 //    return @[child1,child2,child3];
-    return @[child2];
+    return @[child2,child3];
     
 }
 

@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseUserTableController.h"
 #import "XLPagerTabStripViewController.h"
 
-@interface ProfileChildTableController : UITableViewController <XLPagerTabStripChildItem>
+@interface ProfileFollowerController : BaseUserTableController <XLPagerTabStripChildItem>
 
 @property (nonatomic, copy) void(^scrollTopBlock)();
 @property (nonatomic, copy) void(^scrollDownBlock)();

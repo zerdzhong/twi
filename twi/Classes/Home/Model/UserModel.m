@@ -19,6 +19,7 @@
         self.memberRank = [dict[@"mbrank"] intValue];
         self.memberType = [dict[@"mbtype"] intValue];
         self.coverImageURL = dict[@"cover_image_phone"];
+        self.desc = dict[@"description"];
     }
     
     return self;

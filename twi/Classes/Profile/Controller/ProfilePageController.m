@@ -12,6 +12,7 @@
 #import "MJRefresh.h"
 #import "ProfileHeadView.h"
 #import "ProfileContentController.h"
+#import "MBProgressHUD.h"
 
 @interface ProfilePageController ()
 
@@ -31,6 +32,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     _headView.currentUser = _currentUser;
     __unsafe_unretained ProfilePageController *weakSelf = self;
     
@@ -38,8 +42,10 @@
                            success:^(UserModel *user) {
                                weakSelf.currentUser = user;
                                weakSelf.headView.currentUser = _currentUser;
+                               [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
                            } failure:^(NSError *error) {
                                MyLog(@"failure:%@",error.description);
+                               [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
                            }];
     
     [self setupBlocks];

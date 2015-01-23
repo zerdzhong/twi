@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseTweetTableController.h"
 
-@interface HomeController : UITableViewController
+@interface HomeController : BaseTweetTableController
 
 @end
