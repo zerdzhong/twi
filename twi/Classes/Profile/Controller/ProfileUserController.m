@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 zerd. All rights reserved.
 //
 
-#import "ProfileFollowerController.h"
+#import "ProfileUserController.h"
 #import "TweetTool.h"
 #import "WeiboAccountTool.h"
 #import "StatusCellFrame.h"
@@ -14,16 +14,16 @@
 #import "TweetDetailController.h"
 #import "ProfileTool.h"
 
-@interface ProfileFollowerController ()
+@interface ProfileUserController ()
 
 @end
 
-@implementation ProfileFollowerController
+@implementation ProfileUserController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    __unsafe_unretained ProfileFollowerController *weakSelf = self;
+    __unsafe_unretained ProfileUserController *weakSelf = self;
     
     [ProfileTool getFollowerWithUid:[WeiboAccountTool sharedWeiboAccountTool].currentCount.uid success:^(NSArray *resultArray) {
         weakSelf.userArray = [NSMutableArray arrayWithArray:resultArray];
@@ -33,6 +33,29 @@
         MyLog(@"failure");
     }];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    if (self.userArray == nil || self.userArray.count == 0) {
+        __unsafe_unretained ProfileUserController *weakSelf = self;
+        if (self.type == kFollower) {
+            [ProfileTool getFollowerWithUid:[WeiboAccountTool sharedWeiboAccountTool].currentCount.uid success:^(NSArray *resultArray) {
+                weakSelf.userArray = [NSMutableArray arrayWithArray:resultArray];
+                //刷新tableview
+                [self.tableView reloadData];
+            } failure:^(NSError *error) {
+                MyLog(@"failure");
+            }];
+        }else if (self.type == kFriend){
+            [ProfileTool getFriendWithUid:[WeiboAccountTool sharedWeiboAccountTool].currentCount.uid success:^(NSArray *resultArray) {
+                weakSelf.userArray = [NSMutableArray arrayWithArray:resultArray];
+                //刷新tableview
+                [self.tableView reloadData];
+            } failure:^(NSError *error) {
+                MyLog(@"failure");
+            }];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {

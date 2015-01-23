@@ -19,5 +19,6 @@ typedef void(^FailureBlock)(NSError *error);
 + (void)getProfileWithUid:(NSString *)uid success:(void(^)(UserModel *user))success failure:(FailureBlock)failure;
 
 + (void)getFollowerWithUid:(NSString *)uid success:(void(^)(NSArray *resultArray))success failure:(FailureBlock)failure;
++ (void)getFriendWithUid:(NSString *)uid success:(void(^)(NSArray *resultArray))success failure:(FailureBlock)failure;
 
 @end

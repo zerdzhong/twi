@@ -24,13 +24,13 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dE9-ok-yvG" userLabel="ScreenName">
-                        <rect key="frame" x="63" y="5" width="42" height="21"/>
+                        <rect key="frame" x="68" y="5" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xi9-yx-PDM" userLabel="Desc">
-                        <rect key="frame" x="63" y="31" width="249" height="25"/>
+                        <rect key="frame" x="68" y="31" width="244" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -44,7 +44,7 @@
                     <constraint firstItem="G3F-z7-6ux" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Gy0-zf-bN0"/>
                     <constraint firstItem="G3F-z7-6ux" firstAttribute="top" secondItem="dE9-ok-yvG" secondAttribute="top" id="OG7-GB-GjV"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="G3F-z7-6ux" secondAttribute="bottom" constant="5" id="bfE-59-4mm"/>
-                    <constraint firstItem="dE9-ok-yvG" firstAttribute="leading" secondItem="G3F-z7-6ux" secondAttribute="trailing" constant="5" id="qQD-2D-RKs"/>
+                    <constraint firstItem="dE9-ok-yvG" firstAttribute="leading" secondItem="G3F-z7-6ux" secondAttribute="trailing" constant="10" id="qQD-2D-RKs"/>
                     <constraint firstAttribute="bottomMargin" secondItem="xi9-yx-PDM" secondAttribute="bottom" id="wUR-v9-myO"/>
                 </constraints>
             </tableViewCellContentView>

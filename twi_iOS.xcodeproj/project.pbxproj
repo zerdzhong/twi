@@ -162,7 +162,7 @@
 		5C388C601A6D4323007F4817 /* ProfileHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C388C5F1A6D4323007F4817 /* ProfileHeadView.xib */; };
 		5C388C621A6D4594007F4817 /* ProfilePageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C388C611A6D4594007F4817 /* ProfilePageController.xib */; };
 		5C388C6F1A6E03FF007F4817 /* ProfileContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C388C6D1A6E03FF007F4817 /* ProfileContentController.m */; };
-		5C388C731A6E29D6007F4817 /* ProfileFollowerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C388C721A6E29D6007F4817 /* ProfileFollowerController.m */; };
+		5C388C731A6E29D6007F4817 /* ProfileUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C388C721A6E29D6007F4817 /* ProfileUserController.m */; };
 		5C388C751A6E2DAF007F4817 /* ProfileContent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C388C741A6E2DAF007F4817 /* ProfileContent.storyboard */; };
 		5C3EA2D01A1CCD07001F76DE /* timeline_icon_comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3EA2CA1A1CCD07001F76DE /* timeline_icon_comment.png */; };
 		5C3EA2D11A1CCD07001F76DE /* timeline_icon_comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C3EA2CB1A1CCD07001F76DE /* timeline_icon_comment@2x.png */; };
@@ -452,8 +452,8 @@
 		5C388C611A6D4594007F4817 /* ProfilePageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfilePageController.xib; sourceTree = "<group>"; };
 		5C388C6C1A6E03FF007F4817 /* ProfileContentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileContentController.h; sourceTree = "<group>"; };
 		5C388C6D1A6E03FF007F4817 /* ProfileContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileContentController.m; sourceTree = "<group>"; };
-		5C388C711A6E29D6007F4817 /* ProfileFollowerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileFollowerController.h; path = twi/Classes/Profile/Controller/ProfileFollowerController.h; sourceTree = SOURCE_ROOT; };
-		5C388C721A6E29D6007F4817 /* ProfileFollowerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileFollowerController.m; path = twi/Classes/Profile/Controller/ProfileFollowerController.m; sourceTree = SOURCE_ROOT; };
+		5C388C711A6E29D6007F4817 /* ProfileUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileUserController.h; path = twi/Classes/Profile/Controller/ProfileUserController.h; sourceTree = SOURCE_ROOT; };
+		5C388C721A6E29D6007F4817 /* ProfileUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileUserController.m; path = twi/Classes/Profile/Controller/ProfileUserController.m; sourceTree = SOURCE_ROOT; };
 		5C388C741A6E2DAF007F4817 /* ProfileContent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileContent.storyboard; sourceTree = "<group>"; };
 		5C3EA2CA1A1CCD07001F76DE /* timeline_icon_comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeline_icon_comment.png; sourceTree = "<group>"; };
 		5C3EA2CB1A1CCD07001F76DE /* timeline_icon_comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_icon_comment@2x.png"; sourceTree = "<group>"; };
@@ -1157,8 +1157,8 @@
 				5C388C6C1A6E03FF007F4817 /* ProfileContentController.h */,
 				5C388C6D1A6E03FF007F4817 /* ProfileContentController.m */,
 				5C388C741A6E2DAF007F4817 /* ProfileContent.storyboard */,
-				5C388C711A6E29D6007F4817 /* ProfileFollowerController.h */,
-				5C388C721A6E29D6007F4817 /* ProfileFollowerController.m */,
+				5C388C711A6E29D6007F4817 /* ProfileUserController.h */,
+				5C388C721A6E29D6007F4817 /* ProfileUserController.m */,
 				5C9CC7D11A71F84800EF9E08 /* ProfileTweetController.h */,
 				5C9CC7D21A71F84800EF9E08 /* ProfileTweetController.m */,
 			);
@@ -1657,7 +1657,7 @@
 				1736321319F3909700E38161 /* AFHTTPRequestOperation.m in Sources */,
 				5CCB12361A6B8DFF00997ABF /* UIScrollView+MJRefresh.m in Sources */,
 				5CCB11FC1A68EF5000997ABF /* SDWebImageManager+MJ.m in Sources */,
-				5C388C731A6E29D6007F4817 /* ProfileFollowerController.m in Sources */,
+				5C388C731A6E29D6007F4817 /* ProfileUserController.m in Sources */,
 				5CCB12031A68FD2900997ABF /* UIColor+expanded.m in Sources */,
 				5C2A74FD19FBC59C001950EB /* ProfileImageView.m in Sources */,
 				5C0800E219F931CC001630C3 /* StatusCell.m in Sources */,

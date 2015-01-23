@@ -7,7 +7,7 @@
 //
 
 #import "ProfileContentController.h"
-#import "ProfileFollowerController.h"
+#import "ProfileUserController.h"
 #import "ProfileTweetController.h"
 
 @interface ProfileContentController ()
@@ -39,24 +39,28 @@
 
 -(NSArray *)childViewControllersForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController
 {
-//    ProfileChildTableController *child1 = [[ProfileChildTableController alloc]init];
-//    child1.scrollDownBlock = self.scrollDownBlock;
-//    child1.scrollTopBlock = self.scrollTopBlock;
-//    child1.title = @"主页";
     
-    ProfileTweetController *child2 = [[ProfileTweetController alloc]init];
-    child2.title = @"微博";
+    ProfileTweetController *child1 = [[ProfileTweetController alloc]init];
+    child1.title = @"微博";
+    child1.scrollTopBlock = self.scrollTopBlock;
+    child1.scrollDownBlock = self.scrollDownBlock;
+
+    ProfileUserController *child2 = [[ProfileUserController alloc]init];
+    child2.title = @"关注";
+    child2.type = kFriend;
     child2.scrollTopBlock = self.scrollTopBlock;
     child2.scrollDownBlock = self.scrollDownBlock;
-
-    ProfileFollowerController *child3 = [[ProfileFollowerController alloc]init];
-    child3.title = @"粉丝";
-    child3.scrollTopBlock = self.scrollTopBlock;
+    
+    
+    ProfileUserController *child3 = [[ProfileUserController alloc]init];
+    child3.type = kFollower;
     child3.scrollDownBlock = self.scrollDownBlock;
+    child3.scrollTopBlock = self.scrollTopBlock;
+    child3.title = @"粉丝";
+
     
 
-//    return @[child1,child2,child3];
-    return @[child2,child3];
+    return @[child1,child2,child3];
     
 }
 

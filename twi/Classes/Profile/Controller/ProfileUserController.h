@@ -10,9 +10,16 @@
 #import "BaseUserTableController.h"
 #import "XLPagerTabStripViewController.h"
 
-@interface ProfileFollowerController : BaseUserTableController <XLPagerTabStripChildItem>
+typedef enum {
+    kFollower = 0,
+    kFriend = 1
+}UserType;
+
+@interface ProfileUserController : BaseUserTableController <XLPagerTabStripChildItem>
 
 @property (nonatomic, copy) void(^scrollTopBlock)();
 @property (nonatomic, copy) void(^scrollDownBlock)();
+
+@property (nonatomic, assign) UserType type;
 
 @end
