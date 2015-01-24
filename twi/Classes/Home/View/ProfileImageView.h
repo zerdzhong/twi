@@ -32,6 +32,8 @@ typedef enum{
 @property (nonatomic, strong, readonly) UserModel *user;
 @property (nonatomic, assign, readonly) ProfileType profileType;
 
+@property (nonatomic, copy) void(^tapBlock)(id objc);
+
 - (void)setUser:(UserModel *)user type:(ProfileType)type;
 
 @end

@@ -58,8 +58,6 @@
     child3.scrollTopBlock = self.scrollTopBlock;
     child3.title = @"粉丝";
 
-    
-
     return @[child1,child2,child3];
     
 }

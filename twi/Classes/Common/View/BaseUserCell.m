@@ -32,6 +32,9 @@
 -(void)setUser:(UserModel *)user{
     _user = user;
     [_profileImage setUser:_user type:kProfileTypeDefault];
+    [_profileImage setTapBlock:^(id objc) {
+        MyLog(@"UserCell");
+    }];
     [_screenName setText:_user.screenName];
     [_desc setText:_user.desc];
 }

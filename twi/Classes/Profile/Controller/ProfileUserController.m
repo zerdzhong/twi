@@ -63,7 +63,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+#pragma mark- Table view delegate
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //跳转到新的用户界面
+}
 
 #pragma mark- XLPager
 - (NSString *)titleForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController{

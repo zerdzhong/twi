@@ -77,6 +77,9 @@
 - (void)addAllSubviews{
     //头像
     _profileImage = [[ProfileImageView alloc]init];
+    [_profileImage setTapBlock:^(id objc) {
+        MyLog(@"StatusCell");
+    }];
     [self.contentView addSubview:_profileImage];
 
     //昵称

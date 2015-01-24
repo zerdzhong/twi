@@ -7,7 +7,6 @@
 //
 
 #import "ProfileHeadView.h"
-#import "ProfileImageView.h"
 #import "HttpTool.h"
 
 @interface ProfileHeadView ()
@@ -28,7 +27,6 @@
 {
     self = [super initWithCoder:coder];
     if (self) {
-        
         UIView *containerView = [[NSBundle mainBundle]loadNibNamed:@"ProfileHeadView" owner:self options:nil][0];
         CGRect newFrame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
         containerView.frame = newFrame;

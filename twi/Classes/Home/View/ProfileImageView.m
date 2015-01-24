@@ -41,6 +41,23 @@
     [self addSubview:_vertifyImageView];
 }
 
+#pragma mark- 设置 tap block
+
+- (void)setTapBlock:(void (^)(id objc))tapBlock{
+    _tapBlock = tapBlock;
+    if (![_profileImageView gestureRecognizers]) {
+        _profileImageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+        [_profileImageView addGestureRecognizer:tap];
+    }
+}
+
+- (void)tap{
+    if (self.tapBlock) {
+        self.tapBlock(self);
+    }
+}
+
 #pragma mark- 同时设置用户和类型
 
 - (void)setUser:(UserModel *)user type:(ProfileType)type{

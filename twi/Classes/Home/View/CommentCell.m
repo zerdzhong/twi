@@ -27,6 +27,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self ) {
         _profileView = [[ProfileImageView alloc]init];
+        [_profileView setTapBlock:^(id objc) {
+            MyLog(@"CommentCell");
+        }];
         [self addSubview:_profileView];
         _userName = [[UILabel alloc]init];
         [self addSubview:_userName];
