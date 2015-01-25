@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class UserModel;
+
 @interface ProfilePageController : UIViewController
+
+@property (nonatomic, strong)UserModel *currentUser;
 
 @end

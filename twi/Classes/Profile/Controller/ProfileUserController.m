@@ -23,23 +23,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    __unsafe_unretained ProfileUserController *weakSelf = self;
-    
-    [ProfileTool getFollowerWithUid:[WeiboAccountTool sharedWeiboAccountTool].currentCount.uid success:^(NSArray *resultArray) {
-        weakSelf.userArray = [NSMutableArray arrayWithArray:resultArray];
-        //刷新tableview
-        [self.tableView reloadData];
-    } failure:^(NSError *error) {
-        MyLog(@"failure");
-    }];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     if (self.userArray == nil || self.userArray.count == 0) {
         __unsafe_unretained ProfileUserController *weakSelf = self;
         if (self.type == kFollower) {
-            [ProfileTool getFollowerWithUid:[WeiboAccountTool sharedWeiboAccountTool].currentCount.uid success:^(NSArray *resultArray) {
+            [ProfileTool getFollowerWithUid:_uid success:^(NSArray *resultArray) {
                 weakSelf.userArray = [NSMutableArray arrayWithArray:resultArray];
                 //刷新tableview
                 [self.tableView reloadData];
@@ -47,7 +37,7 @@
                 MyLog(@"failure");
             }];
         }else if (self.type == kFriend){
-            [ProfileTool getFriendWithUid:[WeiboAccountTool sharedWeiboAccountTool].currentCount.uid success:^(NSArray *resultArray) {
+            [ProfileTool getFriendWithUid:_uid success:^(NSArray *resultArray) {
                 weakSelf.userArray = [NSMutableArray arrayWithArray:resultArray];
                 //刷新tableview
                 [self.tableView reloadData];
@@ -56,6 +46,11 @@
             }];
         }
     }
+
+}
+
+- (void)setUid:(NSString *)uid{
+    _uid = uid;
 }
 
 - (void)didReceiveMemoryWarning {

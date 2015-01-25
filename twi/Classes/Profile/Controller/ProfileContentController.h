@@ -10,6 +10,8 @@
 
 @interface ProfileContentController : XLButtonBarPagerTabStripViewController
 
+@property (nonatomic, copy) NSString *uid;
+
 @property (nonatomic, copy) void(^scrollTopBlock)();
 @property (nonatomic, copy) void(^scrollDownBlock)();
 

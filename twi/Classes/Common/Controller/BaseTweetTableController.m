@@ -10,6 +10,7 @@
 #import "StatusCellFrame.h"
 #import "StatusCell.h"
 #import "TweetDetailController.h"
+#import "ProfilePageController.h"
 
 @interface BaseTweetTableController ()
 
@@ -58,6 +59,13 @@
     }
     
     cell.statusCellFrame = _statusFrameArray[indexPath.row];
+    StatusModel *status = cell.statusCellFrame.status;
+    //点击头像进入微博作者页面
+    [cell setTapBlock:^(id objc) {
+        ProfilePageController *profileController = [[ProfilePageController alloc]init];
+        profileController.currentUser = status.user;
+        [self.navigationController pushViewController:profileController animated:YES];
+    }];
     //    cell.selectedBackgroundView = [UIView new];
     
     return cell;

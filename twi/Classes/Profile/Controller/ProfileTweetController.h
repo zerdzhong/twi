@@ -14,4 +14,6 @@
 @property (nonatomic, copy) void(^scrollTopBlock)();
 @property (nonatomic, copy) void(^scrollDownBlock)();
 
+@property (nonatomic, copy) NSString *uid;
+
 @end

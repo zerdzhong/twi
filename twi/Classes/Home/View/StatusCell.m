@@ -73,13 +73,16 @@
     [super setFrame:frame];
 }
 
+-(void)setTapBlock:(void (^)(id))tapBlock{
+    _tapBlock = tapBlock;
+    [_profileImage setTapBlock:self.tapBlock];
+}
+
 #pragma mark- 初始化界面
 - (void)addAllSubviews{
     //头像
     _profileImage = [[ProfileImageView alloc]init];
-    [_profileImage setTapBlock:^(id objc) {
-        MyLog(@"StatusCell");
-    }];
+    [_profileImage setTapBlock:self.tapBlock];
     [self.contentView addSubview:_profileImage];
 
     //昵称

@@ -54,6 +54,9 @@
 }
 
 + (void)getTweetsWithUid:(NSString *)uid page:(int)page success:(SuccessBlock)success failuer:(FailureBlock)failure{
+    if (uid == nil) {
+        return;
+    }
     [HttpTool getWithPath:@"2/statuses/user_timeline.json"
                    params:@{@"uid":uid}
              successBlock:^(id JSON) {

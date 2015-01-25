@@ -11,6 +11,7 @@
 
 @interface StatusCell : UITableViewCell
 
+@property (nonatomic, copy) void(^tapBlock)(id objc);
 @property (nonatomic, strong) StatusCellFrame *statusCellFrame;
 
 @end

@@ -24,8 +24,12 @@
     
     self.tableView.tableFooterView = [UIView new];
     self.tableView.separatorStyle= UITableViewCellSeparatorStyleNone;
+}
+
+- (void)setUid:(NSString *)uid{
+    _uid = uid;
     
-    [TweetTool getTweetsWithUid:[WeiboAccountTool sharedWeiboAccountTool].currentCount.uid page:1 success:^(NSArray *statusArray) {
+    [TweetTool getTweetsWithUid:_uid page:1 success:^(NSArray *statusArray) {
         
         self.statusFrameArray = [NSMutableArray array];
         
@@ -42,7 +46,6 @@
     } failuer:^(NSError *error) {
         MyLog(@"failure");
     }];
-    
 }
 
 - (void)didReceiveMemoryWarning {

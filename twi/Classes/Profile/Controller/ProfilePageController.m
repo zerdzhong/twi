@@ -20,7 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *containerViewTopConstraint;
 
-@property (nonatomic, strong)UserModel *currentUser;
+@property (nonatomic, strong) ProfileContentController *contentController;
+@property (nonatomic, copy) NSString *uid;
 
 @property (nonatomic, copy) void(^scrollTopBlock)();
 @property (nonatomic, copy) void(^scrollDownBlock)();
@@ -29,24 +30,38 @@
 
 @implementation ProfilePageController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        UIStoryboard *profileStoryBoard = [UIStoryboard storyboardWithName:@"ProfileContent" bundle:nil];
+        _contentController = [profileStoryBoard instantiateViewControllerWithIdentifier:@"ProfileContent"];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    _headView.currentUser = _currentUser;
-    __unsafe_unretained ProfilePageController *weakSelf = self;
-    
-    [ProfileTool getProfileWithUid:[WeiboAccountTool sharedWeiboAccountTool].currentCount.uid
-                           success:^(UserModel *user) {
-                               weakSelf.currentUser = user;
-                               weakSelf.headView.currentUser = _currentUser;
-                               [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
-                           } failure:^(NSError *error) {
-                               MyLog(@"failure:%@",error.description);
-                               [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
-                           }];
+    if (_currentUser != nil) {
+        _headView.currentUser = _currentUser;
+        self.uid = [NSString stringWithFormat:@"%lld", _currentUser.ID];
+    }else {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        __unsafe_unretained ProfilePageController *weakSelf = self;
+        
+        [ProfileTool getProfileWithUid:[WeiboAccountTool sharedWeiboAccountTool].currentCount.uid
+                               success:^(UserModel *user) {
+                                   weakSelf.currentUser = user;
+                                   weakSelf.headView.currentUser = user;
+                                   weakSelf.uid = [NSString stringWithFormat:@"%lld", user.ID];
+                                   [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+                               } failure:^(NSError *error) {
+                                   MyLog(@"failure:%@",error.description);
+                                   [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+                               }];
+    }
     
     [self setupBlocks];
     [self addContainer];
@@ -85,23 +100,26 @@
     };
 }
 
+- (void)setUid:(NSString *)uid{
+    _uid = uid;
+    _contentController.uid = _uid;
+}
+
 #pragma mark- 添加底部tabController
 - (void)addContainer{
-    UIStoryboard *profileStoryBoard = [UIStoryboard storyboardWithName:@"ProfileContent" bundle:nil];
-    ProfileContentController *contentController = [profileStoryBoard instantiateViewControllerWithIdentifier:@"ProfileContent"];
+
+    _contentController.scrollDownBlock = self.scrollDownBlock;
+    _contentController.scrollTopBlock = self.scrollTopBlock;
     
-    contentController.scrollDownBlock = self.scrollDownBlock;
-    contentController.scrollTopBlock = self.scrollTopBlock;
+    [_contentController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self addChildViewController:_contentController];
+    [self.containerView addSubview:_contentController.view];
     
-    [contentController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self addChildViewController:contentController];
-    [self.containerView addSubview:contentController.view];
+    [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:_contentController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
     
-    [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:contentController.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeTop multiplier:1 constant:0]];
-    
-    [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:contentController.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
-    [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:contentController.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
-    [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:contentController.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
+    [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:_contentController.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeLeft multiplier:1 constant:0]];
+    [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:_contentController.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeBottom multiplier:1 constant:0]];
+    [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:_contentController.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.containerView attribute:NSLayoutAttributeRight multiplier:1 constant:0]];
 }
 
 @end

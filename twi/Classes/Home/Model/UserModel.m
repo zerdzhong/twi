@@ -20,6 +20,7 @@
         self.memberType = [dict[@"mbtype"] intValue];
         self.coverImageURL = dict[@"cover_image_phone"];
         self.desc = dict[@"description"];
+        self.ID = [dict[@"id"] longLongValue];
     }
     
     return self;

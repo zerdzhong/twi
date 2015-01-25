@@ -28,6 +28,9 @@
 }
 
 + (void)getFollowerWithUid:(NSString *)uid success:(void(^)(NSArray *resultArray))success failure:(FailureBlock)failure{
+    if (uid == nil) {
+        return;
+    }
     NSDictionary *param = [NSDictionary dictionaryWithObject:uid forKey:@"uid"];
     
     [HttpTool getWithPath:@"2/friendships/followers.json" params:param
@@ -50,6 +53,9 @@
 
 + (void)getFriendWithUid:(NSString *)uid success:(void(^)(NSArray *resultArray))success failure:(FailureBlock)failure{
 
+    if (uid == nil) {
+        return;
+    }
     NSDictionary *param = [NSDictionary dictionaryWithObject:uid forKey:@"uid"];
     [HttpTool getWithPath:@"2/friendships/friends.json" params:param
              successBlock:^(id JSON) {

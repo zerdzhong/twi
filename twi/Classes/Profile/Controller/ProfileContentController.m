@@ -12,14 +12,21 @@
 
 @interface ProfileContentController ()
 
+@property (nonatomic, strong) ProfileTweetController *child1;
+@property (nonatomic, strong) ProfileUserController *child2;
+@property (nonatomic, strong) ProfileUserController *child3;
+
 @end
 
 @implementation ProfileContentController
 
-- (instancetype)init
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
-    self = [super init];
+    self = [super initWithCoder:coder];
     if (self) {
+        _child1 = [[ProfileTweetController alloc]init];
+        _child2 = [[ProfileUserController alloc]init];
+        _child3 = [[ProfileUserController alloc]init];
     }
     return self;
 }
@@ -35,30 +42,31 @@
     // Dispose of any resources that can be recreated.
 }
 
-// 2/statuses/user_timeline.json 获取用户微博
+- (void)setUid:(NSString *)uid{
+    _uid = uid;
+    _child1.uid = _uid;
+    _child2.uid = _uid;
+    _child3.uid = _uid;
+}
 
 -(NSArray *)childViewControllersForPagerTabStripViewController:(XLPagerTabStripViewController *)pagerTabStripViewController
 {
     
-    ProfileTweetController *child1 = [[ProfileTweetController alloc]init];
-    child1.title = @"微博";
-    child1.scrollTopBlock = self.scrollTopBlock;
-    child1.scrollDownBlock = self.scrollDownBlock;
-
-    ProfileUserController *child2 = [[ProfileUserController alloc]init];
-    child2.title = @"关注";
-    child2.type = kFriend;
-    child2.scrollTopBlock = self.scrollTopBlock;
-    child2.scrollDownBlock = self.scrollDownBlock;
+    _child1.title = @"微博";
+    _child1.scrollTopBlock = self.scrollTopBlock;
+    _child1.scrollDownBlock = self.scrollDownBlock;
     
+    _child2.title = @"关注";
+    _child2.type = kFriend;
+    _child2.scrollTopBlock = self.scrollTopBlock;
+    _child2.scrollDownBlock = self.scrollDownBlock;
     
-    ProfileUserController *child3 = [[ProfileUserController alloc]init];
-    child3.type = kFollower;
-    child3.scrollDownBlock = self.scrollDownBlock;
-    child3.scrollTopBlock = self.scrollTopBlock;
-    child3.title = @"粉丝";
+    _child3.type = kFollower;
+    _child3.scrollDownBlock = self.scrollDownBlock;
+    _child3.scrollTopBlock = self.scrollTopBlock;
+    _child3.title = @"粉丝";
 
-    return @[child1,child2,child3];
+    return @[_child1,_child2,_child3];
     
 }
 
