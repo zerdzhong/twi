@@ -7,7 +7,7 @@
 //
 
 #import "TweetTool.h"
-#import "StatusModel.h"
+#import "TweetModel.h"
 #import "CommentModel.h"
 #import "HttpTool.h"
 #import "WeiboAccountTool.h"
@@ -23,7 +23,7 @@
                  NSMutableArray *array = [[NSMutableArray alloc]init];
                  NSArray *statuses = JSON[@"statuses"];
                  for (NSDictionary *dict in statuses) {
-                     StatusModel *status = [[StatusModel alloc]initWithDict:dict];
+                     TweetModel *status = [[TweetModel alloc]initWithDict:dict];
                      [array addObject:status];
                  }
                  success(array);
@@ -42,7 +42,7 @@
                  NSMutableArray *array = [[NSMutableArray alloc]init];
                  NSArray *statuses = JSON[@"statuses"];
                  for (NSDictionary *dict in statuses) {
-                     StatusModel *status = [[StatusModel alloc]initWithDict:dict];
+                     TweetModel *status = [[TweetModel alloc]initWithDict:dict];
                      [array addObject:status];
                  }
                  success(array);
@@ -64,7 +64,7 @@
                  NSMutableArray *array = [[NSMutableArray alloc]init];
                  NSArray *statuses = JSON[@"statuses"];
                  for (NSDictionary *dict in statuses) {
-                     StatusModel *status = [[StatusModel alloc]initWithDict:dict];
+                     TweetModel *status = [[TweetModel alloc]initWithDict:dict];
                      [array addObject:status];
                  }
                  success(array);

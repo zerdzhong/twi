@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "StatusModel.h"
+#import "TweetModel.h"
 
 @interface TweetDetailController : UITableViewController
 
-@property (nonatomic, strong) StatusModel *currentStatus;
+@property (nonatomic, strong) TweetModel *currentStatus;
 
 @end

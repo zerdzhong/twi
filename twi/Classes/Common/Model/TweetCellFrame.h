@@ -7,11 +7,11 @@
 //  描述一个StatusCell所有子控件的frame
 
 #import <Foundation/Foundation.h>
-#import "StatusModel.h"
+#import "TweetModel.h"
 
-@interface StatusCellFrame : NSObject
+@interface TweetCellFrame : NSObject
 
-@property (nonatomic, strong) StatusModel *status;
+@property (nonatomic, strong) TweetModel *status;
 
 @property (nonatomic, assign, readonly) CGFloat cellHeight;
 

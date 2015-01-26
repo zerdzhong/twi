@@ -9,8 +9,8 @@
 #import "ProfileTweetController.h"
 #import "TweetTool.h"
 #import "WeiboAccountTool.h"
-#import "StatusModel.h"
-#import "StatusCellFrame.h"
+#import "TweetModel.h"
+#import "TweetCellFrame.h"
 
 @interface ProfileTweetController ()
 
@@ -33,8 +33,8 @@
         
         self.statusFrameArray = [NSMutableArray array];
         
-        for (StatusModel *status in statusArray) {
-            StatusCellFrame *cellFrame = [[StatusCellFrame alloc]init];
+        for (TweetModel *status in statusArray) {
+            TweetCellFrame *cellFrame = [[TweetCellFrame alloc]init];
             cellFrame.status = status;
             [self.statusFrameArray addObject:cellFrame];
         }

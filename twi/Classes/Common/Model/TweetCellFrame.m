@@ -6,16 +6,16 @@
 //  Copyright (c) 2014年 zerd. All rights reserved.
 //
 
-#import "StatusCellFrame.h"
+#import "TweetCellFrame.h"
 #import "PictureListView.h"
 #import "ProfileImageView.h"
 
 #define kMemberImageWidth 14
 #define kMemberImageHeight 14
 
-@implementation StatusCellFrame
+@implementation TweetCellFrame
 
-- (void)setStatus:(StatusModel *)status{
+- (void)setStatus:(TweetModel *)status{
     _status = status;
     
     //整个cell的宽度

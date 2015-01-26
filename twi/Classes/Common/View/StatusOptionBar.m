@@ -71,7 +71,7 @@
     [super setFrame:frame];
 }
 
--(void)setTweet:(StatusModel *)tweet{
+-(void)setTweet:(TweetModel *)tweet{
     _tweet = tweet;
     //转发
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 zerd. All rights reserved.
 //  展示一条微博
 
-#import "StatusCell.h"
+#import "BaseTweetCell.h"
 #import "ProfileImageView.h"
 #import "PictureListView.h"
 #import "StatusOptionBar.h"
@@ -17,7 +17,7 @@
 //普通会员颜色
 #define kScreenNameColor
 
-@interface StatusCell ()
+@interface BaseTweetCell ()
 
 @property (nonatomic, strong) ProfileImageView *profileImage;    //头像
 @property (nonatomic, strong) UILabel *screenName;          //昵称
@@ -36,7 +36,7 @@
 
 @end
 
-@implementation StatusCell
+@implementation BaseTweetCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -154,10 +154,10 @@
 }
 
 
-- (void)setStatusCellFrame:(StatusCellFrame *)statusCellFrame{
+- (void)setStatusCellFrame:(TweetCellFrame *)statusCellFrame{
     _statusCellFrame = statusCellFrame;
     
-    StatusModel *status = statusCellFrame.status;
+    TweetModel *status = statusCellFrame.status;
     
     //头像
     [_profileImage setUser:status.user type:kProfileTypeSmall];

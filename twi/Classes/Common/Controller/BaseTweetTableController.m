@@ -7,8 +7,8 @@
 //
 
 #import "BaseTweetTableController.h"
-#import "StatusCellFrame.h"
-#import "StatusCell.h"
+#import "TweetCellFrame.h"
+#import "BaseTweetCell.h"
 #import "TweetDetailController.h"
 #import "ProfilePageController.h"
 
@@ -53,13 +53,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentifier = @"status_cell";
-    StatusCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    BaseTweetCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[StatusCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[BaseTweetCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
     cell.statusCellFrame = _statusFrameArray[indexPath.row];
-    StatusModel *status = cell.statusCellFrame.status;
+    TweetModel *status = cell.statusCellFrame.status;
     //点击头像进入微博作者页面
     [cell setTapBlock:^(id objc) {
         ProfilePageController *profileController = [[ProfilePageController alloc]init];

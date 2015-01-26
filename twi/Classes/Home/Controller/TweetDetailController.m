@@ -7,12 +7,13 @@
 //
 
 #import "TweetDetailController.h"
-#import "StatusCell.h"
 #import "ProfileImageView.h"
 #import "UIView+Common.h"
 #import "TweetTool.h"
 #import "CommentModel.h"
-#import "CommentCell.h"
+#import "BaseCommentCell.h"
+#import "BaseTweetCell.h"
+#import "TweetCellFrame.h"
 #import "MJRefresh.h"
 
 #define kCellIdentifier_TweetDetail @"TweetDetailCell"
@@ -28,7 +29,7 @@
 @property (strong, nonatomic)  UILabel *source;
 @property (strong, nonatomic)  UILabel *tweetText;
 
-@property (strong, nonatomic) StatusCellFrame *tweetCellFrame;
+@property (strong, nonatomic) TweetCellFrame *tweetCellFrame;
 @property (strong, nonatomic) NSMutableArray *commentFrameArray;
 
 @property (assign, nonatomic) int page;
@@ -45,18 +46,18 @@
     
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.tableFooterView = [UIView new];
-    [self.tableView registerClass:[StatusCell class] forCellReuseIdentifier:kCellIdentifier_TweetDetail];
-    [self.tableView registerClass:[CommentCell class] forCellReuseIdentifier:kCellIdentifier_TweetDetailComment];
+    [self.tableView registerClass:[BaseTweetCell class] forCellReuseIdentifier:kCellIdentifier_TweetDetail];
+    [self.tableView registerClass:[BaseCommentCell class] forCellReuseIdentifier:kCellIdentifier_TweetDetailComment];
     
     //添加上下拉刷新
     [self.tableView addFooterWithTarget:self action:@selector(onFooterRefresh)];
     [self.tableView addHeaderWithTarget:self action:@selector(onHeaderRefresh)];
 }
 
-- (void)setCurrentStatus:(StatusModel *)currentStatus{
+- (void)setCurrentStatus:(TweetModel *)currentStatus{
     _currentStatus = currentStatus;
     if (_tweetCellFrame == nil) {
-        _tweetCellFrame = [[StatusCellFrame alloc]init];
+        _tweetCellFrame = [[TweetCellFrame alloc]init];
     }
     _tweetCellFrame.status = _currentStatus;
     
@@ -123,9 +124,9 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.row == 0) {
-        StatusCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier_TweetDetail];
+        BaseTweetCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier_TweetDetail];
         if (cell == nil) {
-            cell = [[StatusCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellIdentifier_TweetDetail];
+            cell = [[BaseTweetCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellIdentifier_TweetDetail];
         }
         
         cell.statusCellFrame = _tweetCellFrame;
@@ -134,10 +135,10 @@
         return cell;
     }else{
     
-        CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier_TweetDetailComment];
+        BaseCommentCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier_TweetDetailComment];
         
         if (cell == nil) {
-            cell = [[CommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellIdentifier_TweetDetail];
+            cell = [[BaseCommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellIdentifier_TweetDetail];
         }
         
         CommentCellFrame *cellFrame = [_commentFrameArray objectAtIndex:indexPath.row - 1];

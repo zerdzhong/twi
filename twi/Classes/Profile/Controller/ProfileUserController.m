@@ -9,8 +9,8 @@
 #import "ProfileUserController.h"
 #import "TweetTool.h"
 #import "WeiboAccountTool.h"
-#import "StatusCellFrame.h"
-#import "StatusCell.h"
+#import "TweetCellFrame.h"
+#import "BaseTweetCell.h"
 #import "TweetDetailController.h"
 #import "ProfileTool.h"
 

@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 zerd. All rights reserved.
 //
 
-#import "StatusModel.h"
+#import "TweetModel.h"
 
-@implementation StatusModel
+@implementation TweetModel
 
 - (id)initWithDict:(NSDictionary *)dict{
     if (self = [super init]) {
@@ -18,7 +18,7 @@
         self.ID = [dict[@"id"] longLongValue];
         //如果有转发
         if (dict[@"retweeted_status"] != nil) {
-            self.reStatus = [[StatusModel alloc]initWithDict:dict[@"retweeted_status"]];
+            self.reStatus = [[TweetModel alloc]initWithDict:dict[@"retweeted_status"]];
         }
         
         self.createdTime = dict[@"created_at"];       //创建时间

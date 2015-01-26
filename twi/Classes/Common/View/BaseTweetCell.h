@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "StatusCellFrame.h"
+#import "TweetCellFrame.h"
 
-@interface StatusCell : UITableViewCell
+@interface BaseTweetCell : UITableViewCell
 
 @property (nonatomic, copy) void(^tapBlock)(id objc);
-@property (nonatomic, strong) StatusCellFrame *statusCellFrame;
+@property (nonatomic, strong) TweetCellFrame *statusCellFrame;
 
 @end

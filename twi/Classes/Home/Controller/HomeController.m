@@ -9,10 +9,10 @@
 #import "HomeController.h"
 #import "UIBarButtonItem+ZD.h"
 #import "TweetTool.h"
-#import "StatusModel.h"
+#import "TweetModel.h"
 #import "UserModel.h"
-#import "StatusCellFrame.h"
-#import "StatusCell.h"
+#import "TweetCellFrame.h"
+#import "BaseTweetCell.h"
 #import "TweetDetailController.h"
 #import "MJRefresh.h"
 #import "MBProgressHUD.h"
@@ -76,8 +76,8 @@
         //拿到最新微博数据的同时，计算frame
 //        _statusFrameArray = [NSMutableArray array];
         
-        for (StatusModel *status in statusArray) {
-            StatusCellFrame *cellFrame = [[StatusCellFrame alloc]init];
+        for (TweetModel *status in statusArray) {
+            TweetCellFrame *cellFrame = [[TweetCellFrame alloc]init];
             cellFrame.status = status;
             [self.statusFrameArray addObject:cellFrame];
         }
@@ -100,8 +100,8 @@
         //拿到最新微博数据的同时，计算frame
         weakSelf.statusFrameArray = [NSMutableArray array];
         
-        for (StatusModel *status in statusArray) {
-            StatusCellFrame *cellFrame = [[StatusCellFrame alloc]init];
+        for (TweetModel *status in statusArray) {
+            TweetCellFrame *cellFrame = [[TweetCellFrame alloc]init];
             cellFrame.status = status;
             [weakSelf.statusFrameArray addObject:cellFrame];
         }

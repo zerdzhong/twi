@@ -6,14 +6,14 @@
 //  Copyright (c) 2015年 zerd. All rights reserved.
 //
 
-#import "CommentCell.h"
+#import "BaseCommentCell.h"
 #import "ProfileImageView.h"
 #import "NSString+Common.h"
 
 #define kMemberImageWidth 14
 #define kMemberImageHeight 14
 
-@interface CommentCell ()
+@interface BaseCommentCell ()
 
 @property (strong, nonatomic) ProfileImageView *profileView;
 @property (strong, nonatomic) UILabel *userName;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation CommentCell
+@implementation BaseCommentCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

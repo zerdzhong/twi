@@ -10,7 +10,7 @@
 #import "CommentModel.h"
 #import "CommentCellFrame.h"
 
-@interface CommentCell : UITableViewCell
+@interface BaseCommentCell : UITableViewCell
 
 @property (nonatomic, strong) CommentCellFrame *cellFrame;
 
