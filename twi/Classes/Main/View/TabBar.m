@@ -13,7 +13,8 @@
 
 @interface TabBar ()
 
-@property(nonatomic,strong) TabBarItem *selectedItem;
+@property (nonatomic, strong) TabBarItem *selectedItem;
+@property (nonatomic, copy) void(^tapBlock)(id objc);
 
 @end
 
@@ -53,10 +54,41 @@
     CGFloat width = self.frame.size.width / [self.subviews count];  //宽度
     CGFloat height = self.frame.size.height;    //高度
     for (int i = 0; i < self.subviews.count; i++) {
-        TabBarItem *tabItem = self.subviews[i];
+        UIView *tabItem = self.subviews[i];
         tabItem.tag = i;
         tabItem.frame = CGRectMake(width * i, 0, width, height);
     }
+}
+
+- (void)addComposeItemWithIcon:(NSString *)imageName tapBlock:(void(^)(id objc))tapBlock{
+    //创建 item
+    UIButton *item = [[UIButton alloc]init];
+    [item setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];   //图标
+    [item setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"tabbar_compose_button@2x.png"]]];
+    
+    if (tapBlock != nil) {
+        self.tapBlock = tapBlock;
+    }
+    
+    [item addTarget:self action:@selector(composeItemClick:) forControlEvents:UIControlEventTouchDown];
+    
+    //添加 item
+    [self addSubview:item];
+    
+    if (self.subviews.count == 1) {
+        //选中首页
+        [self itemClick:self.subviews[0]];
+    }
+    
+    //调整 item 位置
+    CGFloat width = self.frame.size.width / [self.subviews count];  //宽度
+    CGFloat height = self.frame.size.height;    //高度
+    for (int i = 0; i < self.subviews.count; i++) {
+        UIView *tabItem = self.subviews[i];
+        tabItem.tag = i;
+        tabItem.frame = CGRectMake(width * i, 0, width, height);
+    }
+
 }
 
 #pragma mark- 监听点击事件
@@ -72,6 +104,12 @@
     [item setSelected:YES];
     //记录
     self.selectedItem = item;
+}
+
+- (void)composeItemClick:(UIButton *)item{
+    if (self.tapBlock) {
+        self.tapBlock(item);
+    }
 }
 
 @end

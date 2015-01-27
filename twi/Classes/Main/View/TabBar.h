@@ -24,4 +24,7 @@
 //添加一个选项卡
 - (void)addItemWithIcon:(NSString *)imageName selectedIcon:(NSString *)selectedName title:(NSString *)title;
 
+//添加发微博按钮
+- (void)addComposeItemWithIcon:(NSString *)imageName tapBlock:(void(^)(id objc))tapBlock;
+
 @end
