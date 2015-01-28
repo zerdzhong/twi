@@ -16,6 +16,8 @@
 @interface MainController ()
 
 @property (nonatomic, strong) UIView *composeView;
+@property (nonatomic, copy) void(^showTabBarBlock)();
+@property (nonatomic, copy) void(^hideTabBarBlock)();
 
 @end
 
@@ -24,16 +26,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    __unsafe_unretained MainController *weakSelf = self;
+    self.showTabBarBlock = ^(){
+        [weakSelf setTabBarHidden:NO animated:YES];
+    };
+    
+    self.hideTabBarBlock = ^(){
+        [weakSelf setTabBarHidden:YES animated:YES];
+    };
+    
     //初始化所有自控制器
     [self addAllChildController];
     //添加 tabbar
     [self addTabBar];
+    
 }
 
 #pragma mark- 初始化子控制器
 - (void)addAllChildController{
     //1首页
     HomeController *homeVC = [[HomeController alloc]init];
+    homeVC.showTabBarBlock = _showTabBarBlock;
+    homeVC.hideTabBarBlock = _hideTabBarBlock;
     UINavigationController *nav1 = [[UINavigationController alloc]initWithRootViewController:homeVC];
     [self addChildViewController:nav1];
     //2消息

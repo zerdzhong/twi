@@ -13,4 +13,6 @@
 
 @property (nonatomic,strong)TabBar *tabBar;
 
+- (void)setTabBarHidden:(BOOL)hidden animated:(BOOL)animated;
+
 @end

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewTweetController">
+            <connections>
+                <outlet property="addEmojiButton" destination="hBd-9a-NPg" id="7Ve-lO-Knq"/>
+                <outlet property="addImageButton" destination="hpp-Yw-oio" id="miV-a6-x8E"/>
+                <outlet property="addVideoButton" destination="r5c-H0-AFb" id="tGF-aB-92Y"/>
+                <outlet property="addtopicButton" destination="jWR-VC-wKN" id="QUu-gG-u8I"/>
+                <outlet property="atFriendButton" destination="plL-JC-IlL" id="f1R-kf-TPj"/>
+                <outlet property="textView" destination="q0o-Qj-LgT" id="376-Qe-bdy"/>
+                <outlet property="toolBarBottomConstraint" destination="xwD-TM-xr8" id="KwT-Ye-DVb"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="q0o-Qj-LgT">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="545"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IZU-aV-eWV">
+                    <rect key="frame" x="0.0" y="545" width="600" height="55"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpp-Yw-oio">
+                            <rect key="frame" x="0.0" y="0.0" width="120" height="55"/>
+                            <state key="normal" image="compose_toolbar_picture.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" image="compose_toolbar_picture_highlighted.png"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plL-JC-IlL">
+                            <rect key="frame" x="120" y="0.0" width="120" height="55"/>
+                            <state key="normal" image="compose_mentionbutton_background.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" image="compose_mentionbutton_background_highlighted.png"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWR-VC-wKN">
+                            <rect key="frame" x="240" y="0.0" width="120" height="55"/>
+                            <state key="normal" image="compose_trendbutton_background.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" image="compose_trendbutton_background_highlighted.png"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r5c-H0-AFb">
+                            <rect key="frame" x="480" y="0.0" width="120" height="55"/>
+                            <state key="normal" image="compose_toolbar_video.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" image="compose_toolbar_video_highlighted.png"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hBd-9a-NPg">
+                            <rect key="frame" x="360" y="0.0" width="120" height="55"/>
+                            <state key="normal" image="compose_emoticonbutton_background.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" image="compose_emoticonbutton_background_highlighted.png"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="r5c-H0-AFb" firstAttribute="leading" secondItem="hBd-9a-NPg" secondAttribute="trailing" id="1dL-Dj-9Wq"/>
+                        <constraint firstItem="jWR-VC-wKN" firstAttribute="top" secondItem="IZU-aV-eWV" secondAttribute="top" id="7ca-O2-xDy"/>
+                        <constraint firstAttribute="bottom" secondItem="jWR-VC-wKN" secondAttribute="bottom" id="AJe-Aw-gG5"/>
+                        <constraint firstAttribute="bottom" secondItem="hpp-Yw-oio" secondAttribute="bottom" id="Ckp-oj-O1u"/>
+                        <constraint firstItem="r5c-H0-AFb" firstAttribute="top" secondItem="IZU-aV-eWV" secondAttribute="top" id="Hm4-fr-ydz"/>
+                        <constraint firstItem="jWR-VC-wKN" firstAttribute="leading" secondItem="plL-JC-IlL" secondAttribute="trailing" id="Itf-8X-hLc"/>
+                        <constraint firstAttribute="trailing" secondItem="r5c-H0-AFb" secondAttribute="trailing" id="Jme-wz-orj"/>
+                        <constraint firstItem="r5c-H0-AFb" firstAttribute="width" secondItem="hBd-9a-NPg" secondAttribute="width" id="Pao-y2-aDu"/>
+                        <constraint firstAttribute="bottom" secondItem="hBd-9a-NPg" secondAttribute="bottom" id="Qd0-kr-mei"/>
+                        <constraint firstItem="r5c-H0-AFb" firstAttribute="width" secondItem="plL-JC-IlL" secondAttribute="width" id="Ra3-om-DYL"/>
+                        <constraint firstItem="r5c-H0-AFb" firstAttribute="width" secondItem="hpp-Yw-oio" secondAttribute="width" id="TlM-Pt-eaR"/>
+                        <constraint firstItem="plL-JC-IlL" firstAttribute="leading" secondItem="hpp-Yw-oio" secondAttribute="trailing" id="Vqf-E3-AoV"/>
+                        <constraint firstItem="plL-JC-IlL" firstAttribute="top" secondItem="IZU-aV-eWV" secondAttribute="top" id="axR-Pq-Agl"/>
+                        <constraint firstAttribute="bottom" secondItem="plL-JC-IlL" secondAttribute="bottom" id="dMg-d7-Cgm"/>
+                        <constraint firstAttribute="height" constant="55" id="hnZ-6f-KIa"/>
+                        <constraint firstItem="hpp-Yw-oio" firstAttribute="leading" secondItem="IZU-aV-eWV" secondAttribute="leading" id="kEV-HG-Khn"/>
+                        <constraint firstItem="r5c-H0-AFb" firstAttribute="width" secondItem="jWR-VC-wKN" secondAttribute="width" id="mgE-x6-YCa"/>
+                        <constraint firstItem="hpp-Yw-oio" firstAttribute="top" secondItem="IZU-aV-eWV" secondAttribute="top" id="nNh-FJ-Ifp"/>
+                        <constraint firstItem="hBd-9a-NPg" firstAttribute="top" secondItem="IZU-aV-eWV" secondAttribute="top" id="nUf-Yl-Y3W"/>
+                        <constraint firstItem="hBd-9a-NPg" firstAttribute="leading" secondItem="jWR-VC-wKN" secondAttribute="trailing" id="pum-QT-JZ6"/>
+                        <constraint firstAttribute="bottom" secondItem="r5c-H0-AFb" secondAttribute="bottom" id="waE-Cf-Z5P"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="q0o-Qj-LgT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4Md-cf-Tv4"/>
+                <constraint firstItem="IZU-aV-eWV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Gs4-kH-BrM"/>
+                <constraint firstItem="q0o-Qj-LgT" firstAttribute="bottom" secondItem="IZU-aV-eWV" secondAttribute="top" id="O9Q-zP-LR4"/>
+                <constraint firstAttribute="trailing" secondItem="q0o-Qj-LgT" secondAttribute="trailing" id="Yid-jg-wqf"/>
+                <constraint firstItem="q0o-Qj-LgT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="e31-Gr-vgK"/>
+                <constraint firstAttribute="trailing" secondItem="IZU-aV-eWV" secondAttribute="trailing" id="nll-9t-P1m"/>
+                <constraint firstAttribute="bottom" secondItem="IZU-aV-eWV" secondAttribute="bottom" id="xwD-TM-xr8"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <point key="canvasLocation" x="290" y="96"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="compose_emoticonbutton_background.png" width="24" height="24"/>
+        <image name="compose_emoticonbutton_background_highlighted.png" width="24" height="24"/>
+        <image name="compose_mentionbutton_background.png" width="24" height="24"/>
+        <image name="compose_mentionbutton_background_highlighted.png" width="24" height="24"/>
+        <image name="compose_toolbar_picture.png" width="24" height="24"/>
+        <image name="compose_toolbar_picture_highlighted.png" width="24" height="24"/>
+        <image name="compose_toolbar_video.png" width="24" height="24"/>
+        <image name="compose_toolbar_video_highlighted.png" width="24" height="24"/>
+        <image name="compose_trendbutton_background.png" width="24" height="24"/>
+        <image name="compose_trendbutton_background_highlighted.png" width="24" height="24"/>
+    </resources>
+</document>

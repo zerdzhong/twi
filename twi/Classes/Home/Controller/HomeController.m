@@ -16,6 +16,7 @@
 #import "TweetDetailController.h"
 #import "MJRefresh.h"
 #import "MBProgressHUD.h"
+#import "NewTweetController.h"
 
 @interface HomeController ()
 
@@ -42,6 +43,14 @@
     //2.请求数据
     [self onHeaderRefresh];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    if (self.showTabBarBlock) {
+        self.showTabBarBlock();
+    }
 }
 
 #pragma mark- 初始化界面
@@ -120,7 +129,11 @@
 
 #pragma mark- 发微博
 - (void)sendStatus{
-    MyLog(@"发微博");
+    if (self.hideTabBarBlock) {
+        self.hideTabBarBlock();
+    }
+    NewTweetController *newTweetVC = [[NewTweetController alloc]init];
+    [self.navigationController pushViewController:newTweetVC animated:YES];
 }
 
 #pragma mark- 弹出菜单

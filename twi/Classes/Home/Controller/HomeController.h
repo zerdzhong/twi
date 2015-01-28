@@ -11,4 +11,7 @@
 
 @interface HomeController : BaseTweetTableController
 
+@property (nonatomic, copy) void(^showTabBarBlock)();
+@property (nonatomic, copy) void(^hideTabBarBlock)();
+
 @end
