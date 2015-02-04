@@ -11,8 +11,24 @@
 #import "CommentModel.h"
 #import "HttpTool.h"
 #import "WeiboAccountTool.h"
+#import "NSString+ZDURLEncoding.h"
 
 @implementation TweetTool
+
+#pragma mark- 发微博
+
++ (void)postTweetWithContent:(NSString *)status success:(SuccessBlock)success failure:(FailureBlock)failure{
+    
+    [HttpTool postWithPath:@"2/statuses/update.json"
+                    params:@{@"status":[status URLEncodedString]}
+              successBlock:^(id JSON) {
+                  if (success == nil) return ;
+                  success(nil);
+              } failureBlock:^(NSError *error) {
+                  if (failure == nil) return ;
+                  failure(error);
+              }];
+}
 
 #pragma mark- 获取微博
 + (void)getTweetsWithPage:(int)page success:(SuccessBlock)success failure:(FailureBlock)failure{

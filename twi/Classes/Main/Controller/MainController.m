@@ -12,8 +12,11 @@
 #import "MoreController.h"
 #import "ProfilePageController.h"
 #import "SquareController.h"
+#import <objc/objc.h>
 
-@interface MainController ()
+@interface MainController (){
+    NSString *mString;
+}
 
 @property (nonatomic, strong) UIView *composeView;
 @property (nonatomic, copy) void(^showTabBarBlock)();
@@ -22,6 +25,8 @@
 @end
 
 @implementation MainController
+
+__weak id reference = nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,7 +45,33 @@
     //添加 tabbar
     [self addTabBar];
     
+    //test
+    
+    // 调用前，查看下当前线程
+    NSLog(@"当前调用线程：%@", [NSThread currentThread]);
+    
+    // 创建一个串行queue
+    dispatch_queue_t queue = dispatch_queue_create("cn.itcast.queue", DISPATCH_QUEUE_SERIAL);
+    
+    dispatch_async(queue, ^{
+        NSLog(@"开启了一个异步任务，当前线程：%@", [NSThread currentThread]);
+        NSLog(@"mainthread:%@", [NSThread mainThread]);
+    });
+    
+    dispatch_sync(queue, ^{
+        NSLog(@"开启了一个同步任务，当前线程：%@", [NSThread currentThread]);
+    });
+    
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        NSLog(@"当前线程：%@", [NSThread currentThread]);
+//    });
+//    
+//    dispatch_sync(dispatch_get_main_queue(), ^{
+//        NSLog(@"当前线程：%@", [NSThread currentThread]);
+//    });
+    
 }
+
 
 #pragma mark- 初始化子控制器
 - (void)addAllChildController{

@@ -7,8 +7,12 @@
 //
 
 #import "NewTweetController.h"
+#import "TweetTool.h"
 
-@interface NewTweetController ()
+#define ACCOUNT_MAX_CHARS 140
+
+@interface NewTweetController () <UITextViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UIButton *addImageButton;
 @property (weak, nonatomic) IBOutlet UIButton *atFriendButton;
 @property (weak, nonatomic) IBOutlet UIButton *addtopicButton;
@@ -25,16 +29,50 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    UIBarButtonItem *rightBtnItem = [[UIBarButtonItem alloc]initWithTitle:@"发送" style:UIBarButtonItemStyleDone target:self action:@selector(onPostTweet:)];
+//    rightBtnItem.tintColor = [UIColor grayColor];
+    rightBtnItem.enabled = NO;
+    
+    self.navigationItem.rightBarButtonItem = rightBtnItem;
     
     [self.textView becomeFirstResponder];
+    self.textView.delegate = self;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark- 发送微博
+
+- (void)onPostTweet:(id)sender{
+    [TweetTool postTweetWithContent:self.textView.text success:^(NSArray *resultArray) {
+        MyLog(@"success");
+    } failure:^(NSError *error) {
+        MyLog(@"failure");
+    }];
+}
+
+#pragma mark- 监听输入
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    NSString *new = [textView.text stringByReplacingCharactersInRange:range withString:text];
+    NSInteger res = ACCOUNT_MAX_CHARS - [new length];
+    if(res >= 0){
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+        return YES;
+    } else {
+        NSRange rg = {0,[text length] + res};
+        if (rg.length > 0) {
+            NSString *s = [text substringWithRange:rg];
+            [textView setText:[textView.text stringByReplacingCharactersInRange:range withString:s]];
+        }
+        return NO;
+    }
 }
 
 #pragma mark- 键盘监听
@@ -54,9 +92,9 @@
     [UIView animateWithDuration:0.4 animations:^{
         [self.view layoutIfNeeded];
     }];
-
     
 }
+
 
 /*
 #pragma mark - Navigation

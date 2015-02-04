@@ -67,7 +67,7 @@
                             <state key="highlighted" image="compose_emoticonbutton_background_highlighted.png"/>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.027450980390000001" green="0.72549019609999998" blue="0.60784313729999995" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="r5c-H0-AFb" firstAttribute="leading" secondItem="hBd-9a-NPg" secondAttribute="trailing" id="1dL-Dj-9Wq"/>
                         <constraint firstItem="jWR-VC-wKN" firstAttribute="top" secondItem="IZU-aV-eWV" secondAttribute="top" id="7ca-O2-xDy"/>
