@@ -35,6 +35,10 @@
     
     self.navigationItem.rightBarButtonItem = rightBtnItem;
     
+    if (self.navigationItem.leftBarButtonItem == nil) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(onCloseNewTweet)];
+    }
+    
     [self.textView becomeFirstResponder];
     self.textView.delegate = self;
     
@@ -47,11 +51,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)onCloseNewTweet{
+    if (self.closeBlock) {
+        self.closeBlock();
+    }
+}
+
 #pragma mark- 发送微博
 
 - (void)onPostTweet:(id)sender{
     [TweetTool postTweetWithContent:self.textView.text success:^(NSArray *resultArray) {
         MyLog(@"success");
+        if (self.closeBlock) {
+            self.closeBlock();
+        }
     } failure:^(NSError *error) {
         MyLog(@"failure");
     }];

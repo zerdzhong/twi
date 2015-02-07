@@ -133,6 +133,9 @@
         self.hideTabBarBlock();
     }
     NewTweetController *newTweetVC = [[NewTweetController alloc]init];
+    newTweetVC.closeBlock = ^(){
+        [self.navigationController popViewControllerAnimated:YES];
+    };
     [self.navigationController pushViewController:newTweetVC animated:YES];
 }
 

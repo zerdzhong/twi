@@ -10,4 +10,6 @@
 
 @interface NewTweetController : UIViewController
 
+@property (nonatomic, copy) void(^closeBlock)();
+
 @end

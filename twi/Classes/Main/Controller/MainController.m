@@ -12,7 +12,7 @@
 #import "MoreController.h"
 #import "ProfilePageController.h"
 #import "SquareController.h"
-#import <objc/objc.h>
+#import "NewTweetController.h"
 
 @interface MainController (){
     NSString *mString;
@@ -44,31 +44,6 @@ __weak id reference = nil;
     [self addAllChildController];
     //添加 tabbar
     [self addTabBar];
-    
-    //test
-    
-    // 调用前，查看下当前线程
-    NSLog(@"当前调用线程：%@", [NSThread currentThread]);
-    
-    // 创建一个串行queue
-    dispatch_queue_t queue = dispatch_queue_create("cn.itcast.queue", DISPATCH_QUEUE_SERIAL);
-    
-    dispatch_async(queue, ^{
-        NSLog(@"开启了一个异步任务，当前线程：%@", [NSThread currentThread]);
-        NSLog(@"mainthread:%@", [NSThread mainThread]);
-    });
-    
-    dispatch_sync(queue, ^{
-        NSLog(@"开启了一个同步任务，当前线程：%@", [NSThread currentThread]);
-    });
-    
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        NSLog(@"当前线程：%@", [NSThread currentThread]);
-//    });
-//    
-//    dispatch_sync(dispatch_get_main_queue(), ^{
-//        NSLog(@"当前线程：%@", [NSThread currentThread]);
-//    });
     
 }
 
@@ -150,6 +125,9 @@ __weak id reference = nil;
         int col = i % numsProcolumn;
         CGFloat margin = (self.view.frame.size.width - viewWH*numsProcolumn)/(numsProcolumn+1);
         UIImageView *image = [[UIImageView alloc]init];
+        image.tag = i;
+        image.userInteractionEnabled = YES;
+        [image addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onComposeClicked:)]];
         
         image.image = [UIImage imageNamed:[ NSString stringWithFormat:@"tabbar_compose_%d",i ]];
         image.backgroundColor = [UIColor clearColor];
@@ -195,8 +173,26 @@ __weak id reference = nil;
             [view removeFromSuperview];
         }
     }
-    
 }
+
+- (void)onComposeClicked:(UITapGestureRecognizer *)sender{
+    switch (sender.view.tag) {
+        case 0:{
+            NewTweetController *newTweetVC = [[NewTweetController alloc]init];
+            newTweetVC.closeBlock = ^(){
+                [self dismissViewControllerAnimated:YES completion:nil];
+                [self closeCompose];
+            };
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:newTweetVC];
+            [self presentViewController:nav animated:YES completion:nil];
+            break;
+        }
+        default:
+            break;
+    }
+    MyLog(@"%d",sender.view.tag);
+}
+
 
 #pragma mark- 初始化 TabBar
 - (void)addTabBar{
