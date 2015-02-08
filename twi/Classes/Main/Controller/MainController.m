@@ -120,7 +120,7 @@ __weak id reference = nil;
     CGFloat viewWH = 80;
     for (int i = 0; i < count; i ++) {
         
-        int posY = 200;
+        int posY = 150;
         int row = i / numsProcolumn;
         int col = i % numsProcolumn;
         CGFloat margin = (self.view.frame.size.width - viewWH*numsProcolumn)/(numsProcolumn+1);
@@ -164,15 +164,21 @@ __weak id reference = nil;
 }
 
 - (void)closeCompose{
-    [self.composeView removeFromSuperview];
-//    _composeView.hidden = YES;
     
-    //移除控件
-    for ( UIView *view in self.composeView.subviews) {
-        if ([view isKindOfClass:[UIImageView class]])  {
-            [view removeFromSuperview];
+    [UIView animateWithDuration:0.25 animations:^{
+        self.composeView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self.composeView removeFromSuperview];
+        //    _composeView.hidden = YES;
+        
+        //移除控件
+        for ( UIView *view in self.composeView.subviews) {
+            if ([view isKindOfClass:[UIImageView class]])  {
+                [view removeFromSuperview];
+            }
         }
-    }
+    }];
+
 }
 
 - (void)onComposeClicked:(UITapGestureRecognizer *)sender{
@@ -190,7 +196,6 @@ __weak id reference = nil;
         default:
             break;
     }
-    MyLog(@"%d",sender.view.tag);
 }
 
 
