@@ -41,6 +41,7 @@
     [HttpTool loadImageView:_profileImageView withUrl:[NSURL URLWithString:_currentUser.profileImageURL] place:nil completed:^(UIImage *image, NSError *error) {
         _profileImageView.image = [self getEllipseImageWithImage:image];
     }];
+    
     [HttpTool loadImageView:_backgroundImageView withUrl:[NSURL URLWithString:_currentUser.coverImageURL] place:nil];
     _screenName.text = _currentUser.screenName;
 }

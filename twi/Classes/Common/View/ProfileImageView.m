@@ -73,7 +73,6 @@
     //设置用户头像
     [HttpTool loadImageView:_profileImageView withUrl:[NSURL URLWithString:_user.profileImageURL] place:[UIImage imageNamed:_placeholder] completed:^(UIImage *image, NSError *error) {
         _profileImageView.image = [self getEllipseImageWithImage:image];
-        [self layoutSubviews];
     }];
     
     //设置认证图标
@@ -150,6 +149,7 @@
 
 -(UIImage *)getEllipseImageWithImage:( UIImage *)originImage
 {
+    
     UIColor * epsBackColor = [UIColor lightGrayColor]; // 边框的背景色
     
     int boundPadding = 1;
@@ -190,7 +190,7 @@
     
     UIGraphicsEndImageContext ();
     
-//    UIGraphicsPushContext(ctx);
+    //    UIGraphicsPushContext(ctx);
     
     return desImage;
     
