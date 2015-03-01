@@ -34,8 +34,11 @@
         
         //添加三个按钮
         self.retweet = [self addButton:@"转发" icon:@"timeline_icon_retweet.png" bg:@"timeline_card_leftbottom.png" index:0];
+        [self.retweet addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchDown];
         self.comment = [self addButton:@"评论" icon:@"timeline_icon_comment.png" bg:@"timeline_card_middlebottom.png" index:1];
+        [self.comment addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchDown];
         self.upvote = [self addButton:@"赞" icon:@"timeline_icon_unlike.png" bg:@"timeline_card_rightbottom.png" index:2];
+        [self.upvote addTarget:self action:@selector(onButtonClicked:) forControlEvents:UIControlEventTouchDown];
     }
     
     return self;
@@ -99,6 +102,22 @@
     }
     
     return reslut;
+}
+
+- (void)onButtonClicked:(UIButton *)button{
+    if (button == self.comment) {
+        if (self.commentBlock != nil) {
+            self.commentBlock();
+        }
+    }else if (button == self.retweet){
+        if (self.retweetBlock != nil) {
+            self.retweetBlock();
+        }
+    }else if (button == self.upvote){
+        if (self.upvoteBlock != nil) {
+            self.upvoteBlock();
+        }
+    }
 }
 
 @end

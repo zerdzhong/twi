@@ -120,6 +120,25 @@
     
     //底部操作条
     _statusOptionBar = [[StatusOptionBar alloc]init];
+    __weak __typeof(self)weakSelf = self;
+    _statusOptionBar.commentBlock = ^(){
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        if (strongSelf.commentBlock != nil) {
+            strongSelf.commentBlock(strongSelf.statusCellFrame.status);
+        }
+    };
+    _statusOptionBar.retweetBlock = ^(){
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        if (strongSelf.retweetBlock != nil) {
+            strongSelf.retweetBlock(strongSelf.statusCellFrame.status);
+        }
+    };
+    _statusOptionBar.upvoteBlock= ^(){
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        if (strongSelf.upvoteBlock != nil) {
+            strongSelf.upvoteBlock(strongSelf.statusCellFrame.status);
+        }
+    };
     [self.contentView addSubview:_statusOptionBar];
     
 
@@ -224,8 +243,6 @@
     } else {
         _retweetedView.hidden = YES;
     }
-    
-    
 }
 
 @end

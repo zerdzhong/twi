@@ -68,6 +68,16 @@
     }];
     //    cell.selectedBackgroundView = [UIView new];
     
+    [cell setCommentBlock:^(TweetModel *model) {
+        MyLog(@"评论%@",model);
+    }];
+    [cell setRetweetBlock:^(TweetModel *model) {
+        MyLog(@"转发%@",model);
+    }];
+    [cell setUpvoteBlock:^(TweetModel *model) {
+        MyLog(@"赞%@",model);
+    }];
+    
     return cell;
 }
 

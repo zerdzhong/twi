@@ -13,4 +13,8 @@
 
 @property (nonatomic, strong) TweetModel *tweet;
 
+@property (nonatomic, copy) void(^retweetBlock)();
+@property (nonatomic, copy) void(^commentBlock)();
+@property (nonatomic, copy) void(^upvoteBlock)();
+
 @end

@@ -14,4 +14,9 @@
 @property (nonatomic, copy) void(^tapBlock)(id objc);
 @property (nonatomic, strong) TweetCellFrame *statusCellFrame;
 
+@property (nonatomic, copy) void(^retweetBlock)(TweetModel *);
+@property (nonatomic, copy) void(^commentBlock)(TweetModel *);
+@property (nonatomic, copy) void(^upvoteBlock)(TweetModel *);
+
+
 @end
