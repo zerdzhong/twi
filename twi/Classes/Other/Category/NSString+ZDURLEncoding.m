@@ -12,12 +12,6 @@
 
 - (NSString *)URLEncodedString
 {
-    
-    static NSString * const kAFCharactersToBeEscaped = @":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`";
-    static NSString * const kAFCharactersToLeaveUnescaped = @"[].";
-    
-//    return (__bridge_transfer  NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)self, (__bridge CFStringRef)kAFCharactersToLeaveUnescaped, (__bridge CFStringRef)kAFCharactersToBeEscaped, CFStringConvertNSStringEncodingToEncoding(kCFStringEncodingUTF8));
-    
     NSString *encodedString = (NSString *)
     CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
                                                               (CFStringRef)self,
