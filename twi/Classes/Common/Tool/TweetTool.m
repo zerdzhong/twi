@@ -18,13 +18,14 @@
 #pragma mark- 发微博
 
 + (void)postTweetWithContent:(NSString *)status success:(SuccessBlock)success failure:(FailureBlock)failure{
-    
     [HttpTool postWithPath:@"2/statuses/update.json"
-                    params:@{@"status":[status URLEncodedString]}
+                    params:@{@"status":status}
               successBlock:^(id JSON) {
+                  MyLog(@"success from TweetTool");
                   if (success == nil) return ;
                   success(nil);
               } failureBlock:^(NSError *error) {
+                  MyLog(@"failure from TweetTool");
                   if (failure == nil) return ;
                   failure(error);
               }];

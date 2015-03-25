@@ -13,15 +13,27 @@
 - (NSString *)URLEncodedString
 {
     
-    static NSString * const kAFCharactersToBeEscaped = @":/?&=;+!@#$()',*";
+    static NSString * const kAFCharactersToBeEscaped = @":/?#[]@!$ &'()*+,;=\"<>%{}|\\^~`";
     static NSString * const kAFCharactersToLeaveUnescaped = @"[].";
     
-    return (__bridge_transfer  NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)self, (__bridge CFStringRef)kAFCharactersToLeaveUnescaped, (__bridge CFStringRef)kAFCharactersToBeEscaped, CFStringConvertNSStringEncodingToEncoding(kCFStringEncodingUTF8));
+//    return (__bridge_transfer  NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)self, (__bridge CFStringRef)kAFCharactersToLeaveUnescaped, (__bridge CFStringRef)kAFCharactersToBeEscaped, CFStringConvertNSStringEncodingToEncoding(kCFStringEncodingUTF8));
+    
+    NSString *encodedString = (NSString *)
+    CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                              (CFStringRef)self,
+                                                              (CFStringRef)@"!$&'()*+,-./:;=?@_~%#[]",
+                                                              NULL,
+                                                              kCFStringEncodingUTF8));
+    
+    return encodedString;
     
 }
 
 - (NSString*)URLDecodedString
 {
+    
+
+    
     NSString *result = (NSString *)
     CFBridgingRelease(CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
                                                             (CFStringRef)self,

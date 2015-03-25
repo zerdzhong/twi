@@ -60,10 +60,12 @@
 #pragma mark- 发送微博
 
 - (void)onPostTweet:(id)sender{
+    __weak __typeof(self)weakSelf = self;
     [TweetTool postTweetWithContent:self.textView.text success:^(NSArray *resultArray) {
         MyLog(@"success");
-        if (self.closeBlock) {
-            self.closeBlock();
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        if (strongSelf.closeBlock) {
+            strongSelf.closeBlock();
         }
     } failure:^(NSError *error) {
         MyLog(@"failure");
