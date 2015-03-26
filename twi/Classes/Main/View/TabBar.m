@@ -64,7 +64,8 @@
     //创建 item
     UIButton *item = [[UIButton alloc]init];
     [item setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];   //图标
-    [item setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"tabbar_compose_button@2x.png"]]];
+//    [item setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"tabbar_compose_button@2x.png"]]];
+    [item setBackgroundImage:[UIImage imageNamed:@"tabbar_compose_button@2x.png"] forState:UIControlStateNormal];
     
     if (tapBlock != nil) {
         self.tapBlock = tapBlock;

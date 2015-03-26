@@ -1462,7 +1462,7 @@
 				ORGANIZATIONNAME = zerd;
 				TargetAttributes = {
 					174AA30E19EADE5600EED52C = {
-						DevelopmentTeam = U46NZDWC3Y;
+						DevelopmentTeam = F37Q38QHF9;
 					};
 				};
 			};
@@ -1817,7 +1817,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 振东 钟 (8YR5JXP346)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 振东 钟 (8YR5JXP346)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1832,6 +1833,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "afc4ee83-2b68-4f6d-b572-2ec086e15bd6";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1848,7 +1850,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 振东 钟 (8YR5JXP346)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 振东 钟 (8YR5JXP346)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1856,6 +1859,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "afc4ee83-2b68-4f6d-b572-2ec086e15bd6";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
