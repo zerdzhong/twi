@@ -113,8 +113,9 @@
         __unsafe_unretained MJPhotoLoadingView *loading = _photoLoadingView;
         [_imageView sd_setImageWithURL:_photo.url placeholderImage:_photo.srcImageView.image options:SDWebImageContinueInBackground progress:^(NSInteger receivedSize, NSInteger expectedSize) {
             if (receivedSize > kMinProgress) {
+                __strong typeof(loading) strongLoading = loading;
                 if (nil != loading) {
-                    loading.progress = (float)receivedSize/expectedSize;
+                    strongLoading.progress = (float)receivedSize/expectedSize;
                 }
             }
         } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {

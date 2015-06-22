@@ -75,55 +75,65 @@
     [self.tableView setBackgroundColor:kGlobalTableBG];
     
     //添加上下拉刷新
-    [self.tableView addFooterWithTarget:self action:@selector(onFooterRefresh)];
-    [self.tableView addHeaderWithTarget:self action:@selector(onHeaderRefresh)];
+    [self.tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(onFooterRefresh)];
+    [self.tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(onHeaderRefresh)];
 }
 
 #pragma mark- 上下拉刷新
 - (void)onFooterRefresh{
+    
+    __weak typeof(self) weakSelf = self;
     [TweetTool getTweetsWithPage:_page + 1 success:^(NSArray *statusArray) {
         //拿到最新微博数据的同时，计算frame
-//        _statusFrameArray = [NSMutableArray array];
+        __strong typeof(weakSelf) strongSelf = weakSelf;
         
         for (TweetModel *status in statusArray) {
             TweetCellFrame *cellFrame = [[TweetCellFrame alloc]init];
             cellFrame.status = status;
-            [self.statusFrameArray addObject:cellFrame];
+            [strongSelf.statusFrameArray addObject:cellFrame];
         }
         
         //刷新tableview
-        [self.tableView reloadData];
-        [self.tableView footerEndRefreshing];
-        _page ++;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [strongSelf.tableView reloadData];
+            [strongSelf.tableView.footer endRefreshing];
+        });
+        
+        strongSelf.page ++;
     } failure:^(NSError *error) {
         //failure
-        [self.tableView footerEndRefreshing];
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.tableView.footer endRefreshing];
     }];
 }
 
 - (void)onHeaderRefresh{
     
-    __unsafe_unretained HomeController *weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     
     [TweetTool getTweetsWithPage:1 success:^(NSArray *statusArray) {
         //拿到最新微博数据的同时，计算frame
-        weakSelf.statusFrameArray = [NSMutableArray array];
+        
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        
+        strongSelf.statusFrameArray = [NSMutableArray array];
         
         for (TweetModel *status in statusArray) {
             TweetCellFrame *cellFrame = [[TweetCellFrame alloc]init];
             cellFrame.status = status;
-            [weakSelf.statusFrameArray addObject:cellFrame];
+            [strongSelf.statusFrameArray addObject:cellFrame];
         }
         
         //刷新tableview
-        [weakSelf.tableView reloadData];
-        [weakSelf.tableView headerEndRefreshing];
-        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        [strongSelf.tableView reloadData];
+        [strongSelf.tableView.header endRefreshing];
+        [MBProgressHUD hideHUDForView:strongSelf.view animated:YES];
         _page = 1;
     } failure:^(NSError *error) {
         //failure
-        [weakSelf.tableView headerEndRefreshing];
-        [MBProgressHUD hideHUDForView:weakSelf.view animated:YES];
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.tableView.header endRefreshing];
+        [MBProgressHUD hideHUDForView:strongSelf.view animated:YES];
     }];
 }
 

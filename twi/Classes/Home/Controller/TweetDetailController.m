@@ -67,8 +67,12 @@
 #pragma mark- 上下拉刷新
 - (void)onFooterRefresh{
     
+    __weak typeof(self) weakSelf = self;
+    
     [TweetTool getCommentsWithID:_currentStatus.ID page:_page + 1 success:^(NSArray *resultArray) {
         //拿到最新微博数据的同时，计算frame
+        
+        __strong typeof(weakSelf) strongSelf = weakSelf;
         
         for (CommentModel *comment in resultArray) {
             CommentCellFrame *cellFrame = [[CommentCellFrame alloc]init];
@@ -77,12 +81,13 @@
         }
         
         //刷新tableview
-        [self.tableView reloadData];
-        [self.tableView footerEndRefreshing];
+        [strongSelf.tableView reloadData];
+        [strongSelf.tableView footerEndRefreshing];
         _page ++;
     } failuer:^(NSError *error) {
         //failure
-        [self.tableView footerEndRefreshing];
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.tableView footerEndRefreshing];
     }];
 }
 
